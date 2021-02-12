@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		96A2D96325D6FEA6001CB109 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96A2D96525D6FEA6001CB109 /* Localizable.strings */; };
 		96A2D97B25D7003F001CB109 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2D97A25D7003F001CB109 /* OnboardingView.swift */; };
+		96A2D98825D73DCF001CB109 /* OnboardingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2D98725D73DCF001CB109 /* OnboardingButtonView.swift */; };
 		F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9072544E17400F8903A /* wulkanowyApp.swift */; };
 		F4C6D90C2544E17500F8903A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90B2544E17500F8903A /* Assets.xcassets */; };
 		F4C6D90F2544E17500F8903A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90E2544E17500F8903A /* Preview Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		96A2D96425D6FEA6001CB109 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96A2D96925D6FEBB001CB109 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96A2D97A25D7003F001CB109 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		96A2D98725D73DCF001CB109 /* OnboardingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButtonView.swift; sourceTree = "<group>"; };
 		F4C6D9042544E17400F8903A /* wulkanowy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wulkanowy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C6D9072544E17400F8903A /* wulkanowyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wulkanowyApp.swift; sourceTree = "<group>"; };
 		F4C6D90B2544E17500F8903A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				96A2D97A25D7003F001CB109 /* OnboardingView.swift */,
+				96A2D98725D73DCF001CB109 /* OnboardingButtonView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			files = (
 				F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */,
 				96A2D97B25D7003F001CB109 /* OnboardingView.swift in Sources */,
+				96A2D98825D73DCF001CB109 /* OnboardingButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
