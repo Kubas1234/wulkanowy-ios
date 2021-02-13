@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct OnboardingButtonView: View {
+    
+    @AppStorage("needsAppOnboarding") var needsAppOnboarding: Bool = true
+    
     var body: some View {
         Button(action: {
-            print("Exit the onboarding")
+            needsAppOnboarding = false
         }, label: {
-            Text("onboarding.start")
+            Text("onboarding.continue")
         })
         .padding(10)
         .frame(minWidth: 0, maxWidth: .infinity)

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct OnboardingView: View {
     
-    @State private var isAnimating: Bool = false
-    
     var body: some View {
             VStack(spacing: 20) {
                 Spacer()
@@ -18,7 +16,6 @@ struct OnboardingView: View {
                     .resizable()
                     .frame(width: 200, height: 200, alignment: .top)
                     .foregroundColor(Color("OnboardingColor"))
-                    .scaleEffect(isAnimating ? 1.0 : 0.6)
                 VStack(spacing: 20) {
                     Text("onboarding.description.title")
                         .font(.headline)
@@ -31,11 +28,6 @@ struct OnboardingView: View {
                 Spacer()
                 OnboardingButtonView()
                     .padding()
-            }
-            .onAppear {
-                withAnimation(.easeOut(duration: 0.5)) {
-                    isAnimating = true
-                }
             }
     }
 }
