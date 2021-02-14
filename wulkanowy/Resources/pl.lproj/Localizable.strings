@@ -9,5 +9,10 @@
 "title" = "Wulkanowy";
 
 "onboarding.description.title" = "Śledź swoje postępy w nauce za pomocą Wulkanowego!";
-"onboarding.description.content" = "Wulkanowy pozwala Tobie na sprawdzenie swoich ocen, frewkwencji, wiadomości od nauczycieli i wiele więcej!";
+"onboarding.description.content" = "Wulkanowy pozwala Tobie na sprawdzenie swoich ocen, frekwencji, wiadomości od nauczycieli i wiele więcej!";
 "onboarding.continue" = "Kontynuuj";
+
+"login.login" = "Logowanie";
+"login.token" = "Token";
+"login.symbol" = "Symbol";
+"login.pin" = "PIN";
