@@ -9,13 +9,15 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
+    
     var body: some View {
             VStack(spacing: 20) {
                 Spacer()
                 Image("wulkanowy-svg")
                     .resizable()
                     .frame(width: 200, height: 200, alignment: .top)
-                    .foregroundColor(Color("OnboardingColor"))
+                    .foregroundColor(Color("PrimaryColor"))
                 VStack(spacing: 20) {
                     Text("onboarding.description.title")
                         .font(.headline)
@@ -26,7 +28,9 @@ struct OnboardingView: View {
                 }
                 .padding(.horizontal, 20)
                 Spacer()
-                OnboardingButtonView()
+                CustomButtonView(action: {
+                    needsAppOnboarding = false
+                }, title: "onboarding.continue")
                     .padding()
             }
     }

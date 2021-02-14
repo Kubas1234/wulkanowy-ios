@@ -11,11 +11,36 @@ struct LoginView: View {
     
     @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
     
+    @State private var token: String = ""
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .sheet(isPresented: $needsAppOnboarding) {
-                OnboardingView()
-            }
+        VStack {
+            Image("wulkanowy-svg")
+                .resizable()
+                .foregroundColor(Color("PrimaryColor"))
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+            
+            Text("login.login")
+                .font(.largeTitle)
+                .padding(.bottom, 30)
+            
+            CustomTextFieldView(placeholder: "login.token", text: "")
+            
+            CustomTextFieldView(placeholder: "login.symbol", text: "")
+            
+            CustomTextFieldView(placeholder: "login.pin", text: "")
+            
+            Spacer()
+            
+            CustomButtonView(action: {
+                print("Works")
+            }, title: "login.login")
+        }
+        .padding([.top, .horizontal], 20)
+        .sheet(isPresented: $needsAppOnboarding) {
+            OnboardingView()
+        }
     }
 }
 
