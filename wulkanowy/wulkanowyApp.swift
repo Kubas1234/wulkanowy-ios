@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Sdk
+import Combine
 
 @main
 struct wulkanowyApp: App {

@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  wulkanowy
+
+  Created by Tomasz on 11/02/2021.
+  
+*/
+
+"loginTitle" = "Log In";
+"token" = "Token";
+"symbol" = "Symbol";
+"pin" = "Pin";
+"loginButton" = "Login";
