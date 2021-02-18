@@ -12,9 +12,9 @@ import os
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public class Sdk {
-    static private let libraryVersion: String = "v0-INTERNAL"
+    static private let libraryVersion: String = "0.0.1"
     
-    private let loggerSubsystem: String = "xyz.shameful.VulcanKit"
+    private let loggerSubsystem: String = "com.wulkanowy-ios.Sdk"
     private var cancellables: Set<AnyCancellable> = []
     
     public let certificate: X509
