@@ -5,6 +5,7 @@
 //  Created by Mikołaj on 25/10/2020.
 //
 
+
 import SwiftUI
 
 enum AvailableEndpoints: String, CaseIterable {
@@ -22,20 +23,65 @@ struct ContentView: View {
     @State private var pin: String = ""
     @State private var deviceModel: String = ""
     
+    @State private var clicked: Bool = false
+    
     let cellHeight: CGFloat = 55
     let cornerRadius: CGFloat = 12
     let cellBackground: Color = Color(UIColor.systemGray6).opacity(0.5)
     
+    let nullColor: Color = Color.accentColor.opacity(0.4)
+    
     private func login() {
-        vulcan.login(token: token, symbol: symbol, pin: pin, deviceModel: deviceModel) { error in
-                if let error = error {
-                    print("error: \(error)")
-                } else {
-                    print("success")
-                }
+        clicked = true
+        if(token != "" && symbol != "" && pin != "" && deviceModel != "") {
+            vulcan.login(token: token, symbol: symbol, pin: pin, deviceModel: deviceModel) { error in
+                    if let error = error {
+                        print("error: \(error)")
+                    } else {
+                        print("success")
+                    }
+            }
         }
     }
     
+    private func setColor(input: String) -> Color {
+        if(clicked == true){
+            switch(input) {
+            case "token":
+                if (token == "") {
+                    return nullColor
+                } else {
+                    return cellBackground
+                }
+                
+            case "symbol":
+                if (symbol == "") {
+                    return nullColor
+                } else {
+                    return cellBackground
+                }
+                
+            case "pin":
+                if (pin == "") {
+                    return nullColor
+                } else {
+                    return cellBackground
+                }
+                
+            case "deviceName":
+                if (deviceModel == "") {
+                    return nullColor
+                } else {
+                    return cellBackground
+                }
+                
+            default:
+                return cellBackground
+            }
+        } else {
+            return cellBackground
+        }
+    }
     
     var body: some View {
         VStack {
@@ -64,7 +110,10 @@ struct ContentView: View {
                 .padding(.horizontal)
                 .frame(height: cellHeight)
                 .background(cellBackground)
-                .cornerRadius(cornerRadius)
+                .overlay(
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(setColor(input: "token"), lineWidth: 2)
+                    )
             
             TextField("symbol", text: $symbol)
                 .autocapitalization(.none)
@@ -74,7 +123,10 @@ struct ContentView: View {
                 .padding(.horizontal)
                 .frame(height: cellHeight)
                 .background(cellBackground)
-                .cornerRadius(cornerRadius)
+                .overlay(
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(setColor(input: "symbol"), lineWidth: 2)
+                    )
             
             TextField("pin", text: $pin)
                 .keyboardType(.numberPad)
@@ -84,7 +136,10 @@ struct ContentView: View {
                 .padding(.horizontal)
                 .frame(height: cellHeight)
                 .background(cellBackground)
-                .cornerRadius(cornerRadius)
+                .overlay(
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(setColor(input: "pin"), lineWidth: 2)
+                    )
             
             TextField("Device name", text: $deviceModel)
                 .autocapitalization(.none)
@@ -94,7 +149,10 @@ struct ContentView: View {
                 .padding(.horizontal)
                 .frame(height: cellHeight)
                 .background(cellBackground)
-                .cornerRadius(cornerRadius)
+                .overlay(
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(setColor(input: "deviceName"), lineWidth: 2)
+                    )
             
             Spacer()
             
@@ -116,7 +174,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
-                
         }
         .preferredColorScheme(.light)
     }
