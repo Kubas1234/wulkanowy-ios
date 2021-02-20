@@ -224,10 +224,13 @@ public class Sdk {
               let statusCode = status["Code"] as? Int else {
             return nil
         }
-                
+        
+        print("Response status code: \(statusCode)")
+        
         switch statusCode {
             case 0:        return nil
             case 200:    return APIError.wrongToken
+            case -1:        return APIError.wrongSymbol //Ya, Vulcan returns -1 code
             case 203:    return APIError.wrongPin
             default:    return nil
         }

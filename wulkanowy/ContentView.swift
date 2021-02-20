@@ -42,6 +42,9 @@ struct ContentView: View {
                         switch("\(error)"){
                         case "wrongToken":
                             buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))
+                            
+                        case "wrongSymbol":
+                            buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))
                         
                         case "wrongPin":
                             buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))

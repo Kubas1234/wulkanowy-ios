@@ -12,6 +12,7 @@
 "pin" = "Pin";
 "loginButton" = "Login";
 "wrongToken" = "Wrong token";
+"wrongSymbol" = "Wrong symbol";
 "wrongPin" = "Wrong pin";
 "invalidData" = "Wrong token, symbol or pin";
 "success" = "Success";

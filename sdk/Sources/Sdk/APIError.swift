@@ -20,6 +20,7 @@ public extension Sdk {
         case urlError
         
         case wrongToken
+        case wrongSymbol
         case wrongPin
     }
 }
