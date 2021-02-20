@@ -11,3 +11,8 @@
 "symbol" = "Symbol";
 "pin" = "Pin";
 "loginButton" = "Zaloguj";
+"wrongToken" = "Zły token";
+"wrongPin" = "Zły pin";
+"invalidData" = "Zły token, symbol lub pin";
+"success" = "Sukces";
+

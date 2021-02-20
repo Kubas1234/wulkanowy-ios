@@ -24,6 +24,8 @@ struct ContentView: View {
     @State private var deviceModel: String = ""
     
     @State private var clicked: Bool = false
+    @State private var buttonValue = String(format: NSLocalizedString("loginButton", comment: "loginButton"))
+    @State private var loginStatus: String = ""
     
     let cellHeight: CGFloat = 55
     let cornerRadius: CGFloat = 12
@@ -37,10 +39,23 @@ struct ContentView: View {
             vulcan.login(token: token, symbol: symbol, pin: pin, deviceModel: deviceModel) { error in
                     if let error = error {
                         print("error: \(error)")
+                        switch("\(error)"){
+                        case "wrongToken":
+                            buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))
+                        
+                        case "wrongPin":
+                            buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))
+                        
+                        default:
+                            buttonValue = String(format: NSLocalizedString("invalidData", comment: "loginButton"))
+                        }
                     } else {
                         print("success")
+                        buttonValue = String(format: NSLocalizedString("success", comment: "loginButton"))
                     }
             }
+            
+            
         }
     }
     
@@ -156,7 +171,7 @@ struct ContentView: View {
             
             Spacer()
             
-            Button("loginButton") {login()}
+            Button(buttonValue) {login()}
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
@@ -175,6 +190,6 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
         }
-        .preferredColorScheme(.light)
+        .preferredColorScheme(.dark)
     }
 }
