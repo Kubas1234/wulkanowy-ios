@@ -14,7 +14,7 @@ enum AvailableEndpoints: String, CaseIterable {
 }
 
 
-struct ContentView: View {
+struct LoginView: View {
     
     @StateObject var vulcan: VulcanStore = VulcanStore.shared
     
@@ -26,6 +26,7 @@ struct ContentView: View {
     @State private var clicked: Bool = false
     @State private var buttonValue = String(format: NSLocalizedString("loginButton", comment: "loginButton"))
     @State private var loginStatus: String = ""
+    @State private var willMoveToNextScreen = false
     
     let cellHeight: CGFloat = 55
     let cornerRadius: CGFloat = 12
@@ -54,7 +55,7 @@ struct ContentView: View {
                         }
                     } else {
                         print("success")
-                        buttonValue = String(format: NSLocalizedString("success", comment: "loginButton"))
+                        
                     }
             }
             
@@ -116,8 +117,6 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.semibold)
             }
-            .padding(.top, 50)
-            .padding(.bottom, -50)
             
             Spacer()
             
@@ -182,16 +181,16 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.accentColor.opacity(0.1))
                 .cornerRadius(cornerRadius)
+            Spacer()
         }
         .padding()
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            LoginView()
         }
         .preferredColorScheme(.dark)
     }

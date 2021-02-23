@@ -13,7 +13,7 @@ import Combine
 struct wulkanowyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationBarView()
         }
     }
 }
