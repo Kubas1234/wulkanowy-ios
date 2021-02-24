@@ -181,7 +181,6 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.accentColor.opacity(0.1))
                 .cornerRadius(cornerRadius)
-            Spacer()
         }
         .padding()
     }

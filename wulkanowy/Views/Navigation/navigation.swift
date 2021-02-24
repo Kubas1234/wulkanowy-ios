@@ -9,11 +9,35 @@ import SwiftUI
 
 struct NavigationBarView: View {
     var body: some View {
-        TabView {
+        TabView() {
             DashboardView()
-                .tabItem {
-                    Label("Grades", systemImage: "rosette")
-                        .accessibility(label: Text("Grades"))
+            .tabItem {
+                Label("Dashboard", systemImage: "rectangle.on.rectangle")
+                    .accessibility(label: Text("Dashboard"))
+            }
+
+            GradesView()
+            .tabItem {
+                Label("Grades", systemImage: "rosette")
+                    .accessibility(label: Text("Grades"))
+            }
+            
+            ExamsView()
+            .tabItem {
+                Label("Exams", systemImage: "calendar")
+                    .accessibility(label: Text("Exams"))
+            }
+            
+            HomeworksView()
+            .tabItem {
+                Label("Homework", systemImage: "note.text")
+                    .accessibility(label: Text("Homework"))
+            }
+            
+            MoreView()
+            .tabItem {
+                Label("More", systemImage: "ellipsis.circle")
+                    .accessibility(label: Text("More"))
             }
         }
     }

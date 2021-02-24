@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C2D331025E64F3C000253AC /* grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D330F25E64F3C000253AC /* grades.swift */; };
+		5C2D331425E650EC000253AC /* exams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331325E650EC000253AC /* exams.swift */; };
+		5C2D331825E651C4000253AC /* homework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331725E651C4000253AC /* homework.swift */; };
+		5C2D331C25E651FB000253AC /* more.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331B25E651FB000253AC /* more.swift */; };
 		5C478F3525DC742100ABEFB7 /* VulcanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C478F3425DC742100ABEFB7 /* VulcanStore.swift */; };
 		5C9B6F4925D6C08D00C3F5F5 /* Sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9B6F4825D6C08D00C3F5F5 /* Sdk */; };
-		5CC2EAA525E516F100B6183E /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAA425E516F100B6183E /* Dashboard.swift */; };
+		5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAA425E516F100B6183E /* dashboard.swift */; };
 		5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAAD25E526B500B6183E /* navigation.swift */; };
 		5CCAE31625DA4CDD00D87580 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCAE31525DA4CDD00D87580 /* OpenSSL */; };
 		5CEA516B25D540B900DB45BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CEA516D25D540B900DB45BD /* Localizable.strings */; };
@@ -62,10 +66,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C2D330F25E64F3C000253AC /* grades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = grades.swift; sourceTree = "<group>"; };
+		5C2D331325E650EC000253AC /* exams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exams.swift; sourceTree = "<group>"; };
+		5C2D331725E651C4000253AC /* homework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homework.swift; sourceTree = "<group>"; };
+		5C2D331B25E651FB000253AC /* more.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = more.swift; sourceTree = "<group>"; };
 		5C478F3425DC742100ABEFB7 /* VulcanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VulcanStore.swift; sourceTree = "<group>"; };
 		5C9B6E4925D6ADFB00C3F5F5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		5C9B6F4525D6C06D00C3F5F5 /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sdk; sourceTree = "<group>"; };
-		5CC2EAA425E516F100B6183E /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		5CC2EAA425E516F100B6183E /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
 		5CC2EAAD25E526B500B6183E /* navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigation.swift; sourceTree = "<group>"; };
 		5CEA516C25D540B900DB45BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CF81BD725D9D44400B12C4C /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -155,7 +163,11 @@
 		5CC2EAA325E516DD00B6183E /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				5CC2EAA425E516F100B6183E /* Dashboard.swift */,
+				5CC2EAA425E516F100B6183E /* dashboard.swift */,
+				5C2D330F25E64F3C000253AC /* grades.swift */,
+				5C2D331325E650EC000253AC /* exams.swift */,
+				5C2D331725E651C4000253AC /* homework.swift */,
+				5C2D331B25E651FB000253AC /* more.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -370,10 +382,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2D331425E650EC000253AC /* exams.swift in Sources */,
 				5C478F3525DC742100ABEFB7 /* VulcanStore.swift in Sources */,
+				5C2D331025E64F3C000253AC /* grades.swift in Sources */,
+				5C2D331C25E651FB000253AC /* more.swift in Sources */,
 				F4C6D90A2544E17400F8903A /* LoginView.swift in Sources */,
 				5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */,
-				5CC2EAA525E516F100B6183E /* Dashboard.swift in Sources */,
+				5C2D331825E651C4000253AC /* homework.swift in Sources */,
+				5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */,
 				F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
