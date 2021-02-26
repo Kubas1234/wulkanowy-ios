@@ -104,7 +104,6 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            VStack {
                 Image("wulkanowy")
                     .renderingMode(.template)
                     .resizable()
@@ -116,7 +115,6 @@ struct LoginView: View {
                 Text("loginTitle")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
-            }
             
             Spacer()
             
@@ -183,6 +181,7 @@ struct LoginView: View {
                 .cornerRadius(cornerRadius)
         }
         .padding()
+        Spacer()
     }
 }
 

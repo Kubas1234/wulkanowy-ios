@@ -6,6 +6,7 @@
   
 */
 
+//LOGIN SCREEN
 "loginTitle" = "Logowanie";
 "token" = "Token";
 "symbol" = "Symbol";
@@ -16,4 +17,11 @@
 "wrongPin" = "Zły pin";
 "invalidData" = "Zły token, symbol lub pin";
 "success" = "Sukces";
+
+//NAVIGATION
+"dashboardButton" = "Start";
+"gradesButton" = "Oceny";
+"examsButton" = "Sprawdziany";
+"homeworkButton" = "Zadania";
+"moreButton" = "Więcej";
 

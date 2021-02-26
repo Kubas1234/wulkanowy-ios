@@ -11,7 +11,7 @@ struct ExamsView: View {
     var body: some View {
         NavigationView {
                     VStack {
-                        Text("You are not logged in (Exams)")
+                        Text("You are not logged in (exams)")
                         NavigationLink(destination: LoginView()) {
                             Text("Log in")
                         }

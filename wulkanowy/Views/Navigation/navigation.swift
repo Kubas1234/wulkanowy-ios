@@ -12,31 +12,31 @@ struct NavigationBarView: View {
         TabView() {
             DashboardView()
             .tabItem {
-                Label("Dashboard", systemImage: "rectangle.on.rectangle")
+                Label("dashboardButton", systemImage: "rectangle.on.rectangle")
                     .accessibility(label: Text("Dashboard"))
             }
 
             GradesView()
             .tabItem {
-                Label("Grades", systemImage: "rosette")
+                Label("gradesButton", systemImage: "rosette")
                     .accessibility(label: Text("Grades"))
             }
             
             ExamsView()
             .tabItem {
-                Label("Exams", systemImage: "calendar")
+                Label("examsButton", systemImage: "calendar")
                     .accessibility(label: Text("Exams"))
             }
             
             HomeworksView()
             .tabItem {
-                Label("Homework", systemImage: "note.text")
+                Label("homeworkButton", systemImage: "note.text")
                     .accessibility(label: Text("Homework"))
             }
             
             MoreView()
             .tabItem {
-                Label("More", systemImage: "ellipsis.circle")
+                Label("moreButton", systemImage: "ellipsis.circle")
                     .accessibility(label: Text("More"))
             }
         }
