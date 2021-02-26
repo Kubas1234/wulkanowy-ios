@@ -13,23 +13,27 @@ struct MoreView: View {
             Form {
                 Section {
                     NavigationLink(destination: MessagesView()) {
-                        Text("Messages")
+                        Label("messagesButton", systemImage: "envelope")
+                            .accessibility(label: Text("messagesButton"))
                     }
                     NavigationLink(destination: NotesView()) {
-                        Text("Notes and achievements")
+                        Label("notesButton", systemImage: "graduationcap")
+                            .accessibility(label: Text("notesButton"))
                     }
                 }
                 
                 Section {
                     NavigationLink(destination: SettingsView()) {
-                        Text("Settings")
+                        Label("settingsButton", systemImage: "gear")
+                            .accessibility(label: Text("settingsButton"))
                     }
                     NavigationLink(destination: AboutView()) {
-                        Text("About")
+                        Label("aboutButton", systemImage: "info.circle")
+                            .accessibility(label: Text("aboutButton"))
                     }
                 }
             }
-            .navigationBarTitle("Wulkanowy - more", displayMode: .inline)
+            .navigationBarTitle("moreButton", displayMode: .inline)
         }
     }
 }

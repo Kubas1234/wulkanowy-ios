@@ -24,3 +24,9 @@
 "examsButton" = "Exams";
 "homeworkButton" = "Homework";
 "moreButton" = "More";
+
+//MORE
+"messagesButton" = "Messages";
+"notesButton" = "Notes and achievements";
+"settingsButton" = "Settings";
+"aboutButton" = "About";

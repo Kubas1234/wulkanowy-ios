@@ -25,3 +25,8 @@
 "homeworkButton" = "Zadania";
 "moreButton" = "Więcej";
 
+//MORE
+"messagesButton" = "Wiadomości";
+"notesButton" = "Uwagi i osiągnięcia";
+"settingsButton" = "Ustawienia";
+"aboutButton" = "O aplikacji";
