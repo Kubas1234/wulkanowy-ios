@@ -10,13 +10,27 @@ import SwiftUI
 struct MoreView: View {
     var body: some View {
         NavigationView {
-                    VStack {
-                        Text("You are not logged in (more)")
-                        NavigationLink(destination: LoginView()) {
-                            Text("Log in")
-                        }
-                    }.padding()
+            Form {
+                Section {
+                    NavigationLink(destination: MessagesView()) {
+                        Text("Messages")
+                    }
+                    NavigationLink(destination: NotesView()) {
+                        Text("Notes and achievements")
+                    }
                 }
+                
+                Section {
+                    NavigationLink(destination: SettingsView()) {
+                        Text("Settings")
+                    }
+                    NavigationLink(destination: AboutView()) {
+                        Text("About")
+                    }
+                }
+            }
+            .navigationBarTitle("Wulkanowy - more", displayMode: .inline)
+        }
     }
 }
 
