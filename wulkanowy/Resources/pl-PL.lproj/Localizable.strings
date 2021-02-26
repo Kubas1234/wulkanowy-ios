@@ -11,6 +11,7 @@
 "token" = "Token";
 "symbol" = "Symbol";
 "pin" = "Pin";
+"deviceName" = "Nazwa urządzenia";
 "loginButton" = "Zaloguj";
 "wrongToken" = "Zły token";
 "wrongSymbol" = "Zły symbol";

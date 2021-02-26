@@ -11,6 +11,7 @@
 		5C1794B825E8FE08007AD91A /* notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794B725E8FE08007AD91A /* notes.swift */; };
 		5C1794BC25E8FE19007AD91A /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794BB25E8FE19007AD91A /* settings.swift */; };
 		5C1794C025E8FE27007AD91A /* about.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794BF25E8FE27007AD91A /* about.swift */; };
+		5C1794CD25E90DBD007AD91A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1794CC25E90DBD007AD91A /* KeychainAccess */; };
 		5C2D331025E64F3C000253AC /* grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D330F25E64F3C000253AC /* grades.swift */; };
 		5C2D331425E650EC000253AC /* exams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331325E650EC000253AC /* exams.swift */; };
 		5C2D331825E651C4000253AC /* homework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331725E651C4000253AC /* homework.swift */; };
@@ -106,6 +107,7 @@
 			files = (
 				5C9B6F4925D6C08D00C3F5F5 /* Sdk in Frameworks */,
 				5CCAE31625DA4CDD00D87580 /* OpenSSL in Frameworks */,
+				5C1794CD25E90DBD007AD91A /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +277,7 @@
 			packageProductDependencies = (
 				5C9B6F4825D6C08D00C3F5F5 /* Sdk */,
 				5CCAE31525DA4CDD00D87580 /* OpenSSL */,
+				5C1794CC25E90DBD007AD91A /* KeychainAccess */,
 			);
 			productName = wulkanowy;
 			productReference = F4C6D9042544E17400F8903A /* wulkanowy.app */;
@@ -350,6 +353,7 @@
 			mainGroup = F4C6D8FB2544E17300F8903A;
 			packageReferences = (
 				5CCAE31025DA4CCA00D87580 /* XCRemoteSwiftPackageReference "OpenSSL" */,
+				5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = F4C6D9052544E17400F8903A /* Products */;
 			projectDirPath = "";
@@ -736,6 +740,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.1;
+			};
+		};
 		5CCAE31025DA4CCA00D87580 /* XCRemoteSwiftPackageReference "OpenSSL" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/OpenSSL";
@@ -747,6 +759,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5C1794CC25E90DBD007AD91A /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		5C9B6F4825D6C08D00C3F5F5 /* Sdk */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Sdk;

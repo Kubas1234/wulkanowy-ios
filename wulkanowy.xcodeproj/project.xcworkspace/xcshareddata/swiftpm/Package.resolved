@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
+        "state": {
+          "branch": null,
+          "revision": "654d52d30f3dd4592e944c3e0bccb53178c992f6",
+          "version": "4.2.1"
+        }
+      },
+      {
         "package": "OpenSSL",
         "repositoryURL": "https://github.com/krzyzanowskim/OpenSSL",
         "state": {

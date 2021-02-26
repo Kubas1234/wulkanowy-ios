@@ -156,7 +156,7 @@ struct LoginView: View {
                             .stroke(setColor(input: "pin"), lineWidth: 2)
                     )
             
-            TextField("Device name", text: $deviceModel)
+            TextField("deviceName", text: $deviceModel)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .font(Font.body.weight(Font.Weight.medium))
