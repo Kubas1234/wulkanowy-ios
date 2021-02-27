@@ -104,9 +104,6 @@ struct AboutView: View {
                 
                 Link("Github", destination: URL(string: "https://github.com/wulkanowy/wulkanowy-ios")!)
                     .foregroundColor(Color("customControlColor"))
-                        
-                Link("Donate us!", destination: URL(string: "https://www.paypal.com/paypalme/wulkanowy")!)
-                    .foregroundColor(Color("customControlColor"))
         }
     }
 }
