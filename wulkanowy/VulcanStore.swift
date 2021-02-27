@@ -54,7 +54,7 @@ final class VulcanStore: ObservableObject {
                     keychain[string: "privateKey"] = base64Encoded
                     
                     let key = keychain["privateKey"]
-                    print("Encoded: \(key)")
+                    print("Encoded: \(String(describing: key))")
                 }
             }
             

@@ -18,6 +18,15 @@
           "revision": "389296819a8d025ac10ddc9f22135a5518991fdc",
           "version": "1.1.180"
         }
+      },
+      {
+        "package": "SwiftUIEKtensions",
+        "repositoryURL": "https://github.com/EnesKaraosman/SwiftUIEKtensions",
+        "state": {
+          "branch": null,
+          "revision": "cafd7ad82796528b392107874f07a7279dec7fcd",
+          "version": "0.1.8"
+        }
       }
     ]
   },
