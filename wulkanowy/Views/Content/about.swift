@@ -19,12 +19,12 @@ struct AboutView: View {
     var body: some View {
         Form {
             Section {
-                DisclosureGroup("App version") {
-                    Text("You actually version is alpha 0.1")
+                DisclosureGroup("appVersion") {
+                    Text("appVersionContent")
                         .font(.system(.body, design: .monospaced))
                 }
                 
-                DisclosureGroup("Contributors") {
+                DisclosureGroup("contributors") {
                     HStack {
                         AsyncImage(url: URL(string: "https://avatars.githubusercontent.com/u/55411338?s=460&v=4")!,
                                        placeholder: { Image(systemName: "circle.dashed") },
@@ -54,20 +54,20 @@ struct AboutView: View {
                 }
                 
                 NavigationLink(destination: LicensesView()) {
-                    Text("Licenses")
+                    Text("licensesButton")
                 }
                 
                 Link("FAQ", destination: URL(string: "https://wulkanowy.github.io/czesto-zadawane-pytania")!)
                     .foregroundColor(Color("customControlColor"))
                 
-                Link("Privacy policy", destination: URL(string: "https://wulkanowy.github.io/polityka-prywatnosci")!)
+                Link("privacyPolicy", destination: URL(string: "https://wulkanowy.github.io/polityka-prywatnosci")!)
                     .foregroundColor(Color("customControlColor"))
             }
             Section {
-                Link("Join the Discord serwer", destination: URL(string: "https://discord.com/invite/vccAQBr")!)
+                Link("discordButton", destination: URL(string: "https://discord.com/invite/vccAQBr")!)
                     .foregroundColor(Color("customControlColor"))
                         
-                Link("Facebook fanpage", destination: URL(string: "https://www.facebook.com/wulkanowy")!)
+                Link("fbButton", destination: URL(string: "https://www.facebook.com/wulkanowy")!)
                     .foregroundColor(Color("customControlColor"))
                         
                 Link("Reddit", destination: URL(string: "https://www.reddit.com/r/wulkanowy/")!)
@@ -86,7 +86,7 @@ struct AboutView: View {
                             }
                         }) {
                             HStack {
-                                Text("Report a bug")
+                                Text("reportBug")
                                     .foregroundColor(Color("customControlColor"))
                             }
                         }
@@ -99,7 +99,7 @@ struct AboutView: View {
                         }
                     }
                 
-                Link("Homepage", destination: URL(string: "https://wulkanowy.github.io/")!)
+                Link("homepage", destination: URL(string: "https://wulkanowy.github.io/")!)
                     .foregroundColor(Color("customControlColor"))
                 
                 Link("Github", destination: URL(string: "https://github.com/wulkanowy/wulkanowy-ios")!)

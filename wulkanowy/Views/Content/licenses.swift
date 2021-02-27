@@ -169,7 +169,7 @@ struct LicensesView: View {
             
             // SwiftUIEKtensions
             DisclosureGroup("SwiftUIEKtensions") {
-                Text("No license")
+                Text("noLicence")
                     .font(.system(.body, design: .monospaced))
                     .onTapGesture {
                         guard let url = SwiftUIEKtensionsURL else { return }

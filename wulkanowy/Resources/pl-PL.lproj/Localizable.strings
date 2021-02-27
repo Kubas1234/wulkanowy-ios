@@ -31,3 +31,17 @@
 "notesButton" = "Uwagi i osiągnięcia";
 "settingsButton" = "Ustawienia";
 "aboutButton" = "O aplikacji";
+
+//ABOUT
+"appVersion" = "Wersja aplikacji";
+"appVersionContent" = "Twoja aktualna wersja aplikacji to alpha 0.1";
+"contributors" = "Twórcy";
+"licensesButton" = "Licencje";
+"privacyPolicy" = "Polityka prywatności";
+"discordButton" = "Dołącz do serwera Discord";
+"fbButton" = "Fanpage na Facebooku";
+"reportBug" = "Zgłoś błąd";
+"homepage" = "Strona domowa";
+
+//LICENCES
+"noLicence" = "Brak licencji";

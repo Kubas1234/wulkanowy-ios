@@ -31,3 +31,17 @@
 "notesButton" = "Notes and achievements";
 "settingsButton" = "Settings";
 "aboutButton" = "About";
+
+//ABOUT
+"appVersion" = "App version";
+"appVersionContent" = "You actually version is alpha 0.1";
+"contributors" = "Contributors";
+"licensesButton" = "Licenses";
+"privacyPolicy" = "Privacy policy";
+"discordButton" = "Join the Discord serwer";
+"fbButton" = "Facebook fanpage";
+"reportBug" = "Report a bug";
+"homepage" = "Homepage";
+
+//LICENCES
+"noLicence" = "No licence";
