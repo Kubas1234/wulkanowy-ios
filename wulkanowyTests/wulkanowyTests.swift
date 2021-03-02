@@ -8,6 +8,7 @@
 import XCTest
 @testable import wulkanowy
 
+@available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 class wulkanowyTests: XCTestCase {
 
     override func setUpWithError() throws {

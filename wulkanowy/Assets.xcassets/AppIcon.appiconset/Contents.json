@@ -37,7 +37,11 @@
       "scale" : "3x"
     },
     {
+<<<<<<< HEAD
       "size" : "40x40",
+=======
+      "filename" : "logo.jpg",
+>>>>>>> feature/register-device
       "idiom" : "iphone",
       "filename" : "wulkanowy-40@2x.png",
       "scale" : "2x"
