@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import os
+import KeychainAccess
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public class Sdk {
@@ -16,6 +17,9 @@ public class Sdk {
     
     private let loggerSubsystem: String = "com.wulkanowy-ios.Sdk"
     private var cancellables: Set<AnyCancellable> = []
+    
+    var firebaseToken: String!
+    var endpointURL: String!
     
     public let certificate: X509
     
@@ -136,6 +140,7 @@ public class Sdk {
                    let parsedError = self.parseResponse(response) {
                     completionHandler(parsedError)
                 } else {
+                    self.getStudents(symbol: symbol, deviceModel: deviceModel)
                     completionHandler(nil)
                 }
             })
@@ -155,6 +160,8 @@ public class Sdk {
     /// - Throws: Error
     /// - Returns: URLSession.DataTaskPublisher
     private func registerDevice(endpointURL: String, firebaseToken: String, token: String, symbol: String, pin: String, deviceModel: String) throws -> URLSession.DataTaskPublisher {
+        self.endpointURL = endpointURL
+        self.firebaseToken = firebaseToken
         guard let keyFingerprint = certificate.getPrivateKeyFingerprint(format: .PEM)?.replacingOccurrences(of: ":", with: "").lowercased(),
               let keyData = certificate.getPublicKeyData(),
               let keyBase64 = String(data: keyData, encoding: .utf8)?
@@ -179,7 +186,10 @@ public class Sdk {
             
             return dateFormatter.string(from: now)
         }
-                
+        
+        let keychain = Keychain()
+        keychain[string: "keyFingerprint"] = keyFingerprint
+        
         // Body
         let body: [String: Encodable?] = [
             "AppName": "DzienniczekPlus 2.0",
@@ -201,7 +211,7 @@ public class Sdk {
             "Timestamp": now.millisecondsSince1970,
             "TimestampFormatted": "\(timestampFormatted) GMT"
         ]
-        
+
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         
         request.allHTTPHeaderFields = [
@@ -211,7 +221,52 @@ public class Sdk {
         ]
         
         let signedRequest = try request.signed(with: certificate)
+        
         return URLSession.shared.dataTaskPublisher(for: signedRequest)
+    }
+    
+    private func getStudents(symbol: String, deviceModel: String) {
+        let url = "\(self.endpointURL!)/\(symbol)/api/mobile/register/hebe"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        
+        let now = Date()
+        var vDate: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            
+            return "\(dateFormatter.string(from: now)) GMT"
+        }
+        
+        let signatures = getSignatures(request: request, certificate: certificate)
+        request.setValue("\(signatures)", forHTTPHeaderField: "Signature")
+        
+        request.allHTTPHeaderFields = [
+            "User-Agent": "wulkanowy/1 CFNetwork/1220.1 Darwin/20.1.0",
+            "vOS": "iOS",
+            "vDeviceModel": deviceModel,
+            "vAPI": "1",
+            "vDate": vDate,
+            "vCanonicalUrl": "api%2fmobile%2fregister%2fhebe"
+        ]
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                // Handle HTTP request error
+                print(error)
+            } else if let data = data {
+                // Handle HTTP request response
+                print(String(data: data, encoding: String.Encoding.utf8) as Any)
+            } else {
+                // Handle unexpected error
+            }
+        }
+
+        task.resume()
+
     }
     
     // MARK: - Helper functions

@@ -7,6 +7,7 @@
 
 import Foundation
 import CryptoKit
+import KeychainAccess
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public extension Sdk {

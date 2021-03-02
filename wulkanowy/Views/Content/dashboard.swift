@@ -6,8 +6,19 @@
 //
 
 import SwiftUI
+import KeychainAccess
+import Sdk
 
 struct DashboardView: View {
+    init() {
+        let keychain = Keychain()
+        let key = keychain["privateKey"]
+        
+        let luckyNumber = getLuckyNumber()
+        print(luckyNumber)
+        
+    }
+    
     var body: some View {
         NavigationView {
             VStack {

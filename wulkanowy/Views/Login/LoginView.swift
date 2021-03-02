@@ -55,7 +55,6 @@ struct LoginView: View {
                         }
                     } else {
                         print("success")
-                        
                     }
             }
             
