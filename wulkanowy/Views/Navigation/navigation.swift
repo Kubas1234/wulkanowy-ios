@@ -10,26 +10,46 @@ import SwiftUI
 struct NavigationBarView: View {
     var body: some View {
         TabView() {
-            DashboardView()
-            .tabItem {
+            NavigationView {
+                DashboardView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
                 Label("dashboardButton", systemImage: "rectangle.on.rectangle")
                     .accessibility(label: Text("dashboardButton"))
             }
-
-            GradesView()
-            .tabItem {
+            
+            NavigationView {
+                GradesView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
                 Label("gradesButton", systemImage: "rosette")
                     .accessibility(label: Text("gradesButton"))
             }
-            
-            ExamsView()
-            .tabItem {
+
+            NavigationView {
+                ExamsView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
                 Label("examsButton", systemImage: "calendar")
                     .accessibility(label: Text("examsButton"))
             }
             
-            HomeworksView()
-            .tabItem {
+            NavigationView {
+                HomeworksView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
                 Label("homeworkButton", systemImage: "note.text")
                     .accessibility(label: Text("homeworkButton"))
             }

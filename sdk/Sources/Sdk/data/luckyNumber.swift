@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import KeychainAccess
 
 public func getLuckyNumber() -> Int {
+    /*let keychain = Keychain()
+    endpointURL = keychain["endpointURL"]
+    luckyNumber = apiRequest(endpointURL: endpointURL)*/
     return 7
 }

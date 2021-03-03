@@ -17,16 +17,19 @@
 		5C2D331425E650EC000253AC /* exams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331325E650EC000253AC /* exams.swift */; };
 		5C2D331825E651C4000253AC /* homework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331725E651C4000253AC /* homework.swift */; };
 		5C2D331C25E651FB000253AC /* more.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331B25E651FB000253AC /* more.swift */; };
+		5C42E2A225EE656E0048DDCD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5C42E2A125EE656E0048DDCD /* SwiftyJSON */; };
 		5C478F3525DC742100ABEFB7 /* VulcanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C478F3425DC742100ABEFB7 /* VulcanStore.swift */; };
+		5C75212125EF814400D75CE3 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C75212025EF814400D75CE3 /* CustomButtonView.swift */; };
 		5C89C8F525EA6AA4000B5816 /* licenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89C8F425EA6AA4000B5816 /* licenses.swift */; };
 		5C89C90625EA7996000B5816 /* SwiftUIEKtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 5C89C90525EA7996000B5816 /* SwiftUIEKtensions */; };
 		5C9B6F4925D6C08D00C3F5F5 /* Sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9B6F4825D6C08D00C3F5F5 /* Sdk */; };
-		5CB9907225EE4A3200AA405C /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB9907125EE4A3200AA405C /* CustomButtonView.swift */; };
-		5CB9907625EE4A3B00AA405C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB9907525EE4A3B00AA405C /* OnboardingView.swift */; };
 		5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAA425E516F100B6183E /* dashboard.swift */; };
 		5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAAD25E526B500B6183E /* navigation.swift */; };
 		5CCAE31625DA4CDD00D87580 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCAE31525DA4CDD00D87580 /* OpenSSL */; };
+		5CCB276325EF9C4A00482F4A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB276225EF9C4A00482F4A /* OnboardingView.swift */; };
 		5CEA516B25D540B900DB45BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CEA516D25D540B900DB45BD /* Localizable.strings */; };
+		5CF095AD25F053B10068F2C6 /* accountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF095AC25F053B10068F2C6 /* accountManager.swift */; };
+		5CF6695F25EEE2FD00AC0A86 /* chooseStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6695E25EEE2FD00AC0A86 /* chooseStudent.swift */; };
 		F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9072544E17400F8903A /* wulkanowyApp.swift */; };
 		F4C6D90A2544E17400F8903A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9092544E17400F8903A /* LoginView.swift */; };
 		F4C6D90C2544E17500F8903A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90B2544E17500F8903A /* Assets.xcassets */; };
@@ -86,14 +89,16 @@
 		5C2D331725E651C4000253AC /* homework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homework.swift; sourceTree = "<group>"; };
 		5C2D331B25E651FB000253AC /* more.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = more.swift; sourceTree = "<group>"; };
 		5C478F3425DC742100ABEFB7 /* VulcanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VulcanStore.swift; sourceTree = "<group>"; };
+		5C75212025EF814400D75CE3 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		5C89C8F425EA6AA4000B5816 /* licenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = licenses.swift; sourceTree = "<group>"; };
 		5C9B6E4925D6ADFB00C3F5F5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		5C9B6F4525D6C06D00C3F5F5 /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sdk; sourceTree = "<group>"; };
-		5CB9907125EE4A3200AA405C /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButtonView.swift; path = ../../../../../../Shared/CustomButtonView.swift; sourceTree = "<group>"; };
-		5CB9907525EE4A3B00AA405C /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = ../../../../../../Onboarding/OnboardingView.swift; sourceTree = "<group>"; };
 		5CC2EAA425E516F100B6183E /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
 		5CC2EAAD25E526B500B6183E /* navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigation.swift; sourceTree = "<group>"; };
+		5CCB276225EF9C4A00482F4A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5CEA516C25D540B900DB45BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5CF095AC25F053B10068F2C6 /* accountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountManager.swift; sourceTree = "<group>"; };
+		5CF6695E25EEE2FD00AC0A86 /* chooseStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chooseStudent.swift; sourceTree = "<group>"; };
 		5CF81BD725D9D44400B12C4C /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F4C6D9042544E17400F8903A /* wulkanowy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wulkanowy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C6D9072544E17400F8903A /* wulkanowyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wulkanowyApp.swift; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 				5C9B6F4925D6C08D00C3F5F5 /* Sdk in Frameworks */,
 				5CCAE31625DA4CDD00D87580 /* OpenSSL in Frameworks */,
 				5C1794CD25E90DBD007AD91A /* KeychainAccess in Frameworks */,
+				5C42E2A225EE656E0048DDCD /* SwiftyJSON in Frameworks */,
 				5C89C90625EA7996000B5816 /* SwiftUIEKtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +176,7 @@
 		5C1B849F25E1B7A30074F29D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5CF6695E25EEE2FD00AC0A86 /* chooseStudent.swift */,
 				F4C6D9092544E17400F8903A /* LoginView.swift */,
 			);
 			path = Login;
@@ -186,7 +193,7 @@
 		5CB9906F25EE4A1C00AA405C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				5CB9907525EE4A3B00AA405C /* OnboardingView.swift */,
+				5CCB276225EF9C4A00482F4A /* OnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -194,7 +201,7 @@
 		5CB9907025EE4A2400AA405C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5CB9907125EE4A3200AA405C /* CustomButtonView.swift */,
+				5C75212025EF814400D75CE3 /* CustomButtonView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -212,6 +219,7 @@
 				5C1794BB25E8FE19007AD91A /* settings.swift */,
 				5C1794BF25E8FE27007AD91A /* about.swift */,
 				5C89C8F425EA6AA4000B5816 /* licenses.swift */,
+				5CF095AC25F053B10068F2C6 /* accountManager.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				5CCAE31525DA4CDD00D87580 /* OpenSSL */,
 				5C1794CC25E90DBD007AD91A /* KeychainAccess */,
 				5C89C90525EA7996000B5816 /* SwiftUIEKtensions */,
+				5C42E2A125EE656E0048DDCD /* SwiftyJSON */,
 			);
 			productName = wulkanowy;
 			productReference = F4C6D9042544E17400F8903A /* wulkanowy.app */;
@@ -386,6 +395,7 @@
 				5CCAE31025DA4CCA00D87580 /* XCRemoteSwiftPackageReference "OpenSSL" */,
 				5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				5C89C90425EA7996000B5816 /* XCRemoteSwiftPackageReference "SwiftUIEKtensions" */,
+				5C42E2A025EE656E0048DDCD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = F4C6D9052544E17400F8903A /* Products */;
 			projectDirPath = "";
@@ -433,19 +443,21 @@
 				5C2D331425E650EC000253AC /* exams.swift in Sources */,
 				5C478F3525DC742100ABEFB7 /* VulcanStore.swift in Sources */,
 				5C1CFA7A25EA32AE0047286F /* ghImage.swift in Sources */,
-				5CB9907225EE4A3200AA405C /* CustomButtonView.swift in Sources */,
+				5CCB276325EF9C4A00482F4A /* OnboardingView.swift in Sources */,
+				5C75212125EF814400D75CE3 /* CustomButtonView.swift in Sources */,
 				5C1794BC25E8FE19007AD91A /* settings.swift in Sources */,
 				5C2D331025E64F3C000253AC /* grades.swift in Sources */,
+				5CF6695F25EEE2FD00AC0A86 /* chooseStudent.swift in Sources */,
 				5C2D331C25E651FB000253AC /* more.swift in Sources */,
 				5C1794C025E8FE27007AD91A /* about.swift in Sources */,
 				F4C6D90A2544E17400F8903A /* LoginView.swift in Sources */,
 				5C89C8F525EA6AA4000B5816 /* licenses.swift in Sources */,
 				5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */,
+				5CF095AD25F053B10068F2C6 /* accountManager.swift in Sources */,
 				5C2D331825E651C4000253AC /* homework.swift in Sources */,
 				5C1794B425E8FDFB007AD91A /* messages.swift in Sources */,
 				5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */,
 				5C1794B825E8FE08007AD91A /* notes.swift in Sources */,
-				5CB9907625EE4A3B00AA405C /* OnboardingView.swift in Sources */,
 				F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +798,14 @@
 				minimumVersion = 4.2.1;
 			};
 		};
+		5C42E2A025EE656E0048DDCD /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		5C89C90425EA7996000B5816 /* XCRemoteSwiftPackageReference "SwiftUIEKtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EnesKaraosman/SwiftUIEKtensions";
@@ -809,6 +829,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		5C42E2A125EE656E0048DDCD /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C42E2A025EE656E0048DDCD /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 		5C89C90525EA7996000B5816 /* SwiftUIEKtensions */ = {
 			isa = XCSwiftPackageProductDependency;

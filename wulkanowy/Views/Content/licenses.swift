@@ -9,11 +9,38 @@ import SwiftUI
 
 struct LicensesView: View {
     let KeychainAccessLicense: String = "The MIT License (MIT)\nCopyright (c) 2014 kishikawa katsumi\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    
+    let SwiftyJSONLicense: String = """
+    The MIT License (MIT)
+
+    Copyright (c) 2017 Ruoyu Fu
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+    """
+    
     let KeychainAccessURL: URL? = URL(string: "https://github.com/kishikawakatsumi/KeychainAccess")!
     
     let OpenSSLURL: URL? = URL(string: "https://github.com/krzyzanowskim/OpenSSL")!
     
     let SwiftUIEKtensionsURL: URL? = URL(string: "https://github.com/EnesKaraosman/SwiftUIEKtensions")!
+    
+    let SwiftyJSONURL: URL? = URL(string: "https://github.com/SwiftyJSON/SwiftyJSON")!
     
     let OpenSSLLicense: String = """
   LICENSE ISSUES
@@ -173,6 +200,17 @@ struct LicensesView: View {
                     .font(.system(.body, design: .monospaced))
                     .onTapGesture {
                         guard let url = SwiftUIEKtensionsURL else { return }
+                        UIApplication.shared.open(url)
+                    }
+            }
+            .padding(.vertical)
+            
+            // SwiftyJSON
+            DisclosureGroup("SwiftyJSON") {
+                Text(SwiftyJSONLicense)
+                    .font(.system(.body, design: .monospaced))
+                    .onTapGesture {
+                        guard let url = SwiftyJSONURL else { return }
                         UIApplication.shared.open(url)
                     }
             }

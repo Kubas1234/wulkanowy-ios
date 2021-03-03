@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct NotesView: View {
+    @State private var showModal = false
+    @AppStorage("isLogged") private var isLogged: Bool = false
+    
     var body: some View {
         NavigationView {
-                    VStack {
-                        Text("You are not logged in (notes)")
-                        NavigationLink(destination: LoginView()) {
-                            Text("Log in")
-                        }
-                    }.padding()
-                }
+            if(isLogged == false){
+                VStack {
+                    Text("You are not logged in (notes)")
+                    Button("Log in") {self.showModal = true}
+                        .sheet(isPresented: $showModal, onDismiss: {
+                                    print(self.showModal)
+                                }) {
+                                    LoginView()
+                                }
+                }.padding()
+            } else {
+                Text("Here is notes (in my imagination)")
+            }
+        }
     }
 }
 

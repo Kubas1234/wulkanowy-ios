@@ -10,12 +10,13 @@ import Foundation
 import Combine
 import os
 import KeychainAccess
+import SwiftyJSON
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public class Sdk {
     static private let libraryVersion: String = "0.0.1"
     
-    private let loggerSubsystem: String = "com.wulkanowy-ios.Sdk"
+    private let loggerSubsystem: String = "io.wulkanowy-ios.Sdk"
     private var cancellables: Set<AnyCancellable> = []
     
     var firebaseToken: String!
@@ -259,7 +260,12 @@ public class Sdk {
                 print(error)
             } else if let data = data {
                 // Handle HTTP request response
-                print(String(data: data, encoding: String.Encoding.utf8) as Any)
+                let responseBody = String(data: data, encoding: String.Encoding.utf8)
+                
+                
+                let keychain = Keychain()
+                keychain["students"] = responseBody
+                
             } else {
                 // Handle unexpected error
             }

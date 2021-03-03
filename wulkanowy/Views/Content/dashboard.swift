@@ -18,15 +18,22 @@ struct DashboardView: View {
         print(luckyNumber)
         
     }
+    @State private var showModal = false
+    @AppStorage("isLogged") private var isLogged: Bool = false
     
     var body: some View {
-        NavigationView {
+        if(isLogged == false){
             VStack {
-                Text("You are not logged in (dashboard)")
-                NavigationLink(destination: LoginView()) {
-                    Text("Log in")
-                }
+                Text("You are not logged in")
+                Button("Log in") {self.showModal = true}
+                    .sheet(isPresented: $showModal, onDismiss: {
+                                print(self.showModal)
+                            }) {
+                                LoginView()
+                            }
             }.padding()
+        } else {
+            Text("Here is dashboard (in my imagination)")
         }
     }
 }
