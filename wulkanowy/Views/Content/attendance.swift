@@ -1,15 +1,13 @@
 //
-//  homework.swift
+//  attendance.swift
 //  wulkanowy
 //
-//  Created by Tomasz on 24/02/2021.
+//  Created by Tomasz on 04/03/2021.
 //
 
 import SwiftUI
-import KeychainAccess
-import Sdk
 
-struct HomeworksView: View {
+struct AttendanceView: View {
     @State private var showModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
     
@@ -25,17 +23,17 @@ struct HomeworksView: View {
                             }
             }.padding()
         } else {
-            Text("Here is homeworks (in my imagination)")
+            Text("Here is attendance (in my imagination)")
         }
     }
 }
 
 
 
-struct HomeworksView_Previews: PreviewProvider {
+struct AttendanceView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeworksView()
+            AttendanceView()
         }
         .preferredColorScheme(.dark)
     }

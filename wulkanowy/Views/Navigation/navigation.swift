@@ -5,6 +5,12 @@
 //  Created by Tomasz on 23/02/2021.
 //
 
+//
+//  navigation.swift
+//  wulkanowy
+//
+//  Created by Tomasz on 23/02/2021.
+//
 import SwiftUI
 
 struct NavigationBarView: View {
@@ -33,25 +39,25 @@ struct NavigationBarView: View {
             }
 
             NavigationView {
-                ExamsView()
+                CalendarView()
                     .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
                         Image(systemName: "person.circle")
                     })
                         }
                 .tabItem {
-                Label("examsButton", systemImage: "calendar")
-                    .accessibility(label: Text("examsButton"))
+                Label("calendarButton", systemImage: "calendar")
+                    .accessibility(label: Text("calendarButton"))
             }
             
             NavigationView {
-                HomeworksView()
+                MessagesView()
                     .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
                         Image(systemName: "person.circle")
                     })
                         }
                 .tabItem {
-                Label("homeworkButton", systemImage: "note.text")
-                    .accessibility(label: Text("homeworkButton"))
+                Label("messagesButton", systemImage: "envelope")
+                    .accessibility(label: Text("messagesButton"))
             }
             
             MoreView()
@@ -72,4 +78,3 @@ struct NavigationBarView_Previews: PreviewProvider {
         .preferredColorScheme(.dark)
     }
 }
-

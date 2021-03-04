@@ -22,8 +22,8 @@
 //NAVIGATION
 "dashboardButton" = "Start";
 "gradesButton" = "Oceny";
-"examsButton" = "Sprawdziany";
-"homeworkButton" = "Zadania";
+"calendarButton" = "Kalendarz";
+"attendanceButton" = "Frekwencja";
 "moreButton" = "Więcej";
 
 //MORE

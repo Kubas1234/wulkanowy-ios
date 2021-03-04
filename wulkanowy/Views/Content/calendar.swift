@@ -9,7 +9,7 @@ import SwiftUI
 import KeychainAccess
 import Sdk
 
-struct ExamsView: View {
+struct CalendarView: View {
     @State private var showModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
     
@@ -25,17 +25,17 @@ struct ExamsView: View {
                             }
             }.padding()
         } else {
-            Text("Here is exams (in my imagination)")
+            Text("Here is calendar (in my imagination)")
         }
     }
 }
 
 
 
-struct ExamsView_Previews: PreviewProvider {
+struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ExamsView()
+            CalendarView()
         }
         .preferredColorScheme(.dark)
     }

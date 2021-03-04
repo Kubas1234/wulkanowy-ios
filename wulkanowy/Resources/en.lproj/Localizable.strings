@@ -22,8 +22,8 @@
 //NAVIGATION
 "dashboardButton" = "Dashboard";
 "gradesButton" = "Grades";
-"examsButton" = "Exams";
-"homeworkButton" = "Homework";
+"calendarButton" = "Calendar";
+"attendanceButton" = "Attendance";
 "moreButton" = "More";
 
 //MORE

@@ -12,20 +12,18 @@ struct MessagesView: View {
     @AppStorage("isLogged") private var isLogged: Bool = false
     
     var body: some View {
-        NavigationView {
-            if(isLogged == false){
-                VStack {
-                    Text("You are not logged in (messages)")
-                    Button("Log in") {self.showModal = true}
-                        .sheet(isPresented: $showModal, onDismiss: {
-                                    print(self.showModal)
-                                }) {
-                                    LoginView()
-                                }
-                }.padding()
-            } else {
-                Text("Here are messages (in my imagination)")
-            }
+        if(isLogged == false){
+            VStack {
+                Text("You are not logged in")
+                Button("Log in") {self.showModal = true}
+                    .sheet(isPresented: $showModal, onDismiss: {
+                                print(self.showModal)
+                            }) {
+                                LoginView()
+                            }
+            }.padding()
+        } else {
+            Text("Here is messages (in my imagination)")
         }
     }
 }

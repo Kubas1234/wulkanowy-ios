@@ -14,11 +14,11 @@
 		5C1794CD25E90DBD007AD91A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1794CC25E90DBD007AD91A /* KeychainAccess */; };
 		5C1CFA7A25EA32AE0047286F /* ghImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CFA7925EA32AE0047286F /* ghImage.swift */; };
 		5C2D331025E64F3C000253AC /* grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D330F25E64F3C000253AC /* grades.swift */; };
-		5C2D331425E650EC000253AC /* exams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331325E650EC000253AC /* exams.swift */; };
-		5C2D331825E651C4000253AC /* homework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331725E651C4000253AC /* homework.swift */; };
-		5C2D331C25E651FB000253AC /* more.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331B25E651FB000253AC /* more.swift */; };
+		5C2D331425E650EC000253AC /* calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331325E650EC000253AC /* calendar.swift */; };
 		5C42E2A225EE656E0048DDCD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5C42E2A125EE656E0048DDCD /* SwiftyJSON */; };
 		5C478F3525DC742100ABEFB7 /* VulcanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C478F3425DC742100ABEFB7 /* VulcanStore.swift */; };
+		5C5162D825F0DCDE00EF0777 /* more.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5162D725F0DCDE00EF0777 /* more.swift */; };
+		5C5162DC25F0DD9200EF0777 /* attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5162DB25F0DD9200EF0777 /* attendance.swift */; };
 		5C75212125EF814400D75CE3 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C75212025EF814400D75CE3 /* CustomButtonView.swift */; };
 		5C89C8F525EA6AA4000B5816 /* licenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89C8F425EA6AA4000B5816 /* licenses.swift */; };
 		5C89C90625EA7996000B5816 /* SwiftUIEKtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 5C89C90525EA7996000B5816 /* SwiftUIEKtensions */; };
@@ -85,10 +85,10 @@
 		5C1794BF25E8FE27007AD91A /* about.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = about.swift; sourceTree = "<group>"; };
 		5C1CFA7925EA32AE0047286F /* ghImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ghImage.swift; sourceTree = "<group>"; };
 		5C2D330F25E64F3C000253AC /* grades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = grades.swift; sourceTree = "<group>"; };
-		5C2D331325E650EC000253AC /* exams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exams.swift; sourceTree = "<group>"; };
-		5C2D331725E651C4000253AC /* homework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homework.swift; sourceTree = "<group>"; };
-		5C2D331B25E651FB000253AC /* more.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = more.swift; sourceTree = "<group>"; };
+		5C2D331325E650EC000253AC /* calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar.swift; sourceTree = "<group>"; };
 		5C478F3425DC742100ABEFB7 /* VulcanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VulcanStore.swift; sourceTree = "<group>"; };
+		5C5162D725F0DCDE00EF0777 /* more.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = more.swift; sourceTree = "<group>"; };
+		5C5162DB25F0DD9200EF0777 /* attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attendance.swift; sourceTree = "<group>"; };
 		5C75212025EF814400D75CE3 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		5C89C8F425EA6AA4000B5816 /* licenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = licenses.swift; sourceTree = "<group>"; };
 		5C9B6E4925D6ADFB00C3F5F5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -211,15 +211,15 @@
 			children = (
 				5CC2EAA425E516F100B6183E /* dashboard.swift */,
 				5C2D330F25E64F3C000253AC /* grades.swift */,
-				5C2D331325E650EC000253AC /* exams.swift */,
-				5C2D331725E651C4000253AC /* homework.swift */,
-				5C2D331B25E651FB000253AC /* more.swift */,
+				5C2D331325E650EC000253AC /* calendar.swift */,
 				5C1794B325E8FDFB007AD91A /* messages.swift */,
 				5C1794B725E8FE08007AD91A /* notes.swift */,
 				5C1794BB25E8FE19007AD91A /* settings.swift */,
 				5C1794BF25E8FE27007AD91A /* about.swift */,
 				5C89C8F425EA6AA4000B5816 /* licenses.swift */,
 				5CF095AC25F053B10068F2C6 /* accountManager.swift */,
+				5C5162D725F0DCDE00EF0777 /* more.swift */,
+				5C5162DB25F0DD9200EF0777 /* attendance.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -440,7 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C2D331425E650EC000253AC /* exams.swift in Sources */,
+				5C2D331425E650EC000253AC /* calendar.swift in Sources */,
 				5C478F3525DC742100ABEFB7 /* VulcanStore.swift in Sources */,
 				5C1CFA7A25EA32AE0047286F /* ghImage.swift in Sources */,
 				5CCB276325EF9C4A00482F4A /* OnboardingView.swift in Sources */,
@@ -448,17 +448,17 @@
 				5C1794BC25E8FE19007AD91A /* settings.swift in Sources */,
 				5C2D331025E64F3C000253AC /* grades.swift in Sources */,
 				5CF6695F25EEE2FD00AC0A86 /* chooseStudent.swift in Sources */,
-				5C2D331C25E651FB000253AC /* more.swift in Sources */,
 				5C1794C025E8FE27007AD91A /* about.swift in Sources */,
 				F4C6D90A2544E17400F8903A /* LoginView.swift in Sources */,
 				5C89C8F525EA6AA4000B5816 /* licenses.swift in Sources */,
 				5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */,
+				5C5162D825F0DCDE00EF0777 /* more.swift in Sources */,
 				5CF095AD25F053B10068F2C6 /* accountManager.swift in Sources */,
-				5C2D331825E651C4000253AC /* homework.swift in Sources */,
 				5C1794B425E8FDFB007AD91A /* messages.swift in Sources */,
 				5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */,
 				5C1794B825E8FE08007AD91A /* notes.swift in Sources */,
 				F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */,
+				5C5162DC25F0DD9200EF0777 /* attendance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
