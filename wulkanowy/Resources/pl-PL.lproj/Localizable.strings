@@ -18,6 +18,8 @@
 "wrongPin" = "Zły pin";
 "invalidData" = "Zły token, symbol lub pin";
 "success" = "Sukces";
+"accountRegistered" = "Konto zarejestrowane";
+"accountRegisteredContent" = "Konto zostało już zarejestrowane. Proszę zalogowaź się na inne konto.";
 
 //CHOOSE ACCOUNT
 "registerButton" = "Zarejestruj";

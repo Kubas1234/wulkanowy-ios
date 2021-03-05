@@ -211,7 +211,7 @@ struct LoginView: View {
                 
             }.padding()
             .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Konto zarejestrowane"), message: Text("Konto zostało już zarejestrowane. Proszę zalogowaź się na inne konto."), dismissButton: .default(Text("OK")))}
+                Alert(title: Text("accountRegistered"), message: Text("accountRegisteredContent"), dismissButton: .default(Text("OK")))}
                 Spacer()
             
         }

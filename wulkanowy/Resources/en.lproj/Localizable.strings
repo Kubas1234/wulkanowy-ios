@@ -18,6 +18,8 @@
 "wrongPin" = "Wrong pin";
 "invalidData" = "Wrong token, symbol or pin";
 "success" = "Success";
+"accountRegistered" = "Account registered";
+"accountRegisteredContent" = "The account has already registered. Please log in to another account.";
 
 //CHOOSE ACCOUNT
 "registerButton" = "Register";
