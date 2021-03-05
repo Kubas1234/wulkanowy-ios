@@ -25,6 +25,7 @@
 		5C9B6F4925D6C08D00C3F5F5 /* Sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9B6F4825D6C08D00C3F5F5 /* Sdk */; };
 		5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAA425E516F100B6183E /* dashboard.swift */; };
 		5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAAD25E526B500B6183E /* navigation.swift */; };
+		5CC80E9825F2CAA900F6DE60 /* editAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC80E9725F2CAA900F6DE60 /* editAccount.swift */; };
 		5CCAE31625DA4CDD00D87580 /* OpenSSL in Frameworks */ = {isa = PBXBuildFile; productRef = 5CCAE31525DA4CDD00D87580 /* OpenSSL */; };
 		5CCB276325EF9C4A00482F4A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB276225EF9C4A00482F4A /* OnboardingView.swift */; };
 		5CEA516B25D540B900DB45BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CEA516D25D540B900DB45BD /* Localizable.strings */; };
@@ -95,6 +96,7 @@
 		5C9B6F4525D6C06D00C3F5F5 /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sdk; sourceTree = "<group>"; };
 		5CC2EAA425E516F100B6183E /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
 		5CC2EAAD25E526B500B6183E /* navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigation.swift; sourceTree = "<group>"; };
+		5CC80E9725F2CAA900F6DE60 /* editAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editAccount.swift; sourceTree = "<group>"; };
 		5CCB276225EF9C4A00482F4A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5CEA516C25D540B900DB45BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CF095AC25F053B10068F2C6 /* accountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountManager.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		5C1B848925E1B6910074F29D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5CC80E9625F2CA8A00F6DE60 /* AccountManager */,
 				5CB9907025EE4A2400AA405C /* Shared */,
 				5CB9906F25EE4A1C00AA405C /* Onboarding */,
 				5CC2EAAC25E5269E00B6183E /* Navigation */,
@@ -176,7 +179,6 @@
 		5C1B849F25E1B7A30074F29D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				5CF095AC25F053B10068F2C6 /* accountManager.swift */,
 				5CF6695E25EEE2FD00AC0A86 /* chooseStudent.swift */,
 				F4C6D9092544E17400F8903A /* LoginView.swift */,
 			);
@@ -230,6 +232,15 @@
 				5CC2EAAD25E526B500B6183E /* navigation.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		5CC80E9625F2CA8A00F6DE60 /* AccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				5CF095AC25F053B10068F2C6 /* accountManager.swift */,
+				5CC80E9725F2CAA900F6DE60 /* editAccount.swift */,
+			);
+			path = AccountManager;
 			sourceTree = "<group>";
 		};
 		F4C6D8FB2544E17300F8903A = {
@@ -455,6 +466,7 @@
 				5C5162D825F0DCDE00EF0777 /* more.swift in Sources */,
 				5CF095AD25F053B10068F2C6 /* accountManager.swift in Sources */,
 				5C1794B425E8FDFB007AD91A /* messages.swift in Sources */,
+				5CC80E9825F2CAA900F6DE60 /* editAccount.swift in Sources */,
 				5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */,
 				5C1794B825E8FE08007AD91A /* notes.swift in Sources */,
 				F4C6D9082544E17400F8903A /* wulkanowyApp.swift in Sources */,

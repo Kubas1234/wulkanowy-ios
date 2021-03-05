@@ -19,7 +19,6 @@ struct ChooseStudentView: View {
     
     @State private var selectedStudent: String = ""
     
-    
     init() {
         var responseBody = keychain["students"]
         while responseBody == nil {

@@ -10,7 +10,8 @@ import KeychainAccess
 import SwiftyJSON
 
 struct AccountManagerView: View {
-    @State private var showModal = false
+    @State private var showLoginModal = false
+    @State private var showEditAccountModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
     
     
@@ -40,7 +41,11 @@ struct AccountManagerView: View {
     }
     
     private func addAccount() {
-        self.showModal = true
+        self.showLoginModal = true
+    }
+    
+    private func openEditAccount() {
+        self.showEditAccountModal = true
     }
     
     private func getJsonFromString(body: String) -> JSON {
@@ -56,7 +61,17 @@ struct AccountManagerView: View {
                 Section(header: Text("chooseAccount")
                             .font(.title)) {
                     ForEach(getStudentsNames(), id: \.self) { student in
-                        Text(student)
+                        HStack {
+                            Text(student)
+                            Spacer()
+                            let image = Image(systemName: "pencil")
+                            Button("\(image)") { openEditAccount() }
+                            .sheet(isPresented: $showEditAccountModal, onDismiss: {
+                                    print(self.showEditAccountModal)
+                                }) {
+                                    EditAccountView()
+                                }
+                        }
                     }
                 }
             }.padding(.bottom)
@@ -70,8 +85,8 @@ struct AccountManagerView: View {
                 .background(Color.accentColor.opacity(0.1))
                 .cornerRadius(12)
                 .padding()
-                .sheet(isPresented: $showModal, onDismiss: {
-                    print(self.showModal)
+                .sheet(isPresented: $showLoginModal, onDismiss: {
+                    print(self.showLoginModal)
                 }) {
                     LoginView()
                 }
