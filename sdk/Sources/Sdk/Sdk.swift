@@ -292,6 +292,7 @@ public class Sdk {
             case 200:    return APIError.wrongToken
             case -1:        return APIError.wrongSymbol //Ya, Vulcan returns -1 code
             case 203:    return APIError.wrongPin
+            case 205:    return APIError.deviceExist
             default:    return nil
         }
     }

@@ -21,17 +21,19 @@ struct AccountManagerView: View {
         
         //parsing allStudentsKeys to array
         var allStudents: [String] = []
-        let data = Data(allStudentsKeys.utf8)
-        do {
-            let keys = try JSONSerialization.jsonObject(with: data) as! [String]
-            for key in keys {
-                let student = keychain["student-\(key)"]
-                let data = Data(student!.utf8)
-                let studentParsed = try! JSON(data: data)
-                allStudents.append("\(studentParsed["Login"]["DisplayName"])")
+        if(allStudentsKeys != "[]"){
+            let data = Data(allStudentsKeys.utf8)
+            do {
+                let keys = try JSONSerialization.jsonObject(with: data) as! [String]
+                for key in keys {
+                    let student = keychain["student-\(key)"]
+                    let data = Data(student!.utf8)
+                    let studentParsed = try! JSON(data: data)
+                    allStudents.append("\(studentParsed["Login"]["DisplayName"])")
+                }
+            } catch {
+                print(error)
             }
-        } catch {
-            print(error)
         }
         
         return allStudents

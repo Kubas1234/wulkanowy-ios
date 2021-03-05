@@ -5,8 +5,8 @@
 //  Created by Mikołaj on 25/10/2020.
 //
 
-
 import SwiftUI
+import KeychainAccess
 
 enum AvailableEndpoints: String, CaseIterable {
     case vulcan = "Vulcan"
@@ -22,7 +22,6 @@ open class Navigation: ObservableObject {
 }
 
 struct LoginView: View {
-    
     @StateObject var vulcan: VulcanStore = VulcanStore.shared
     
     @State private var token: String = ""
@@ -35,6 +34,7 @@ struct LoginView: View {
     @State private var loginStatus: String = ""
     @State private var willMoveToNextScreen = false
     @State private var success = false
+    @State private var showingAlert = false
     
     let cellHeight: CGFloat = 55
     let cornerRadius: CGFloat = 12
@@ -57,13 +57,30 @@ struct LoginView: View {
                         
                         case "wrongPin":
                             buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))
+                            
+                        case "deviceExist":
+                            showingAlert.toggle()
                         
                         default:
                             buttonValue = String(format: NSLocalizedString("invalidData", comment: "loginButton"))
                         }
                     } else {
                         print("success")
-                        success = true
+                        let keychain = Keychain()
+                        let keyFingerprint = keychain["keyFingerprint"]
+                        let allStudentsKeys = keychain["allStudentsKeys"]
+                        
+                        let data = Data(allStudentsKeys!.utf8)
+                        do {
+                            let array = try JSONSerialization.jsonObject(with: data) as! [String]
+                            if array.contains(keyFingerprint!) {
+                                showingAlert.toggle()
+                            } else {
+                                success = true
+                            }
+                        } catch {
+                            print(error)
+                        }
                     }
             }
         }
@@ -191,9 +208,12 @@ struct LoginView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.accentColor.opacity(0.1))
                     .cornerRadius(cornerRadius)
-            }
-            .padding()
-            Spacer()
+                
+            }.padding()
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Konto zarejestrowane"), message: Text("Konto zostało już zarejestrowane. Proszę zalogowaź się na inne konto."), dismissButton: .default(Text("OK")))}
+                Spacer()
+            
         }
     }
 }

@@ -73,6 +73,7 @@ struct ChooseStudentView: View {
                 allStudents.append(keyFingerprint!)
                 keychain["allStudentsKeys"] = "\(allStudents)"
                 
+                
                 //saving student
                 keychain["student-\(String(describing: keyFingerprint!))"] = "\(json["Envelope"][i])"
                 
