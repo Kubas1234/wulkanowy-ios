@@ -19,9 +19,17 @@ struct ChooseStudentView: View {
     
     @State private var selectedStudent: String = ""
     
+    
     init() {
-        let responseBody = keychain["students"]
-        let json = getJsonFromString(body: responseBody!)
+        var responseBody = keychain["students"]
+        while responseBody == nil {
+            responseBody = keychain["students"]
+        }
+        
+        let data = Data(responseBody!.utf8)
+        let json = try! JSON(data: data)
+        selectedStudent = "\(json["Envelope"][0]["Login"]["DisplayName"])"
+        
         var i: Int = 0
         while true {
             if (String(describing: json["Envelope"][i]) == "null") {
@@ -29,28 +37,45 @@ struct ChooseStudentView: View {
             }
             else {
                 displayStudents.append(String(describing: json["Envelope"][i]["Login"]["DisplayName"]))
-                displayStudents.append("dupa")
                 i += 1
             }
         }
-        selectedStudent = displayStudents[0]
     }
     
-    private func getJsonFromString(body: String) -> JSON {
-        let data = Data(body.utf8)
-        
-        let json = try! JSON(data: data)
-        return json
-    }
     
     private func saveStudent() {
-        isLogged = true
         let responseBody = keychain["students"]
-        let json = getJsonFromString(body: responseBody!)
+        
+        let data = Data(responseBody!.utf8)
+        let json = try! JSON(data: data)
+        
         var i: Int = 0
+        if(selectedStudent == "") {
+            selectedStudent = "\(json["Envelope"][i]["Login"]["DisplayName"])"
+        }
         while true {
-            if (String(describing: json["Envelope"][i]["Login"]["DisplayName"]) == selectedStudent) {
-                keychain["acctualStudent"] = "\(json["Envelope"][i])"
+            let student = "\(json["Envelope"][i]["Login"]["DisplayName"])"
+            if(student == selectedStudent) {
+                
+                //adding student key to allStudentsKeys
+                let keyFingerprint: String! = keychain["keyFingerprint"]
+                let allStudentsKeys: String! = keychain["allStudentsKeys"] ?? ""
+                
+                //parsing allStudentsKeys to array
+                var allStudents: [String] = []
+                let data = Data(allStudentsKeys!.utf8)
+                do {
+                    let array = try JSONSerialization.jsonObject(with: data) as! [String]
+                    allStudents = array
+                } catch {
+                    print(error)
+                }
+                allStudents.append(keyFingerprint!)
+                keychain["allStudentsKeys"] = "\(allStudents)"
+                
+                //saving student
+                keychain["student-\(String(describing: keyFingerprint!))"] = "\(json["Envelope"][i])"
+                
                 break
             }
             i += 1
@@ -62,18 +87,16 @@ struct ChooseStudentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text(selectedStudent)
-            Text("Wybierz ucznia")
+            Text("selectStudent")
                 .font(.title)
                 .padding(.top)
-            Picker(selection: $selectedStudent, label: Text("Wybierz ucznia:")) {
+            Picker(selection: $selectedStudent, label: Text("selectStudent")) {
                 ForEach(displayStudents, id: \.self) { student in
                     Text(student)
                 }
             }
             Spacer()
-            //NavigationLink(destination: NavigationBarView()){
-            Button("Zarejestruj") {saveStudent()}
+            Button("registerButton") {saveStudent()}
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
@@ -81,7 +104,6 @@ struct ChooseStudentView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.accentColor.opacity(0.1))
                 .cornerRadius(12)
-            //}
             
         }.padding()
     }

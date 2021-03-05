@@ -212,7 +212,7 @@ public class Sdk {
             "Timestamp": now.millisecondsSince1970,
             "TimestampFormatted": "\(timestampFormatted) GMT"
         ]
-
+        
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         
         request.allHTTPHeaderFields = [
@@ -262,9 +262,8 @@ public class Sdk {
                 // Handle HTTP request response
                 let responseBody = String(data: data, encoding: String.Encoding.utf8)
                 
-                
                 let keychain = Keychain()
-                keychain["students"] = responseBody
+                keychain["students"] = responseBody!
                 
             } else {
                 // Handle unexpected error

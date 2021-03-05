@@ -176,6 +176,7 @@
 		5C1B849F25E1B7A30074F29D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5CF095AC25F053B10068F2C6 /* accountManager.swift */,
 				5CF6695E25EEE2FD00AC0A86 /* chooseStudent.swift */,
 				F4C6D9092544E17400F8903A /* LoginView.swift */,
 			);
@@ -217,7 +218,6 @@
 				5C1794BB25E8FE19007AD91A /* settings.swift */,
 				5C1794BF25E8FE27007AD91A /* about.swift */,
 				5C89C8F425EA6AA4000B5816 /* licenses.swift */,
-				5CF095AC25F053B10068F2C6 /* accountManager.swift */,
 				5C5162D725F0DCDE00EF0777 /* more.swift */,
 				5C5162DB25F0DD9200EF0777 /* attendance.swift */,
 			);

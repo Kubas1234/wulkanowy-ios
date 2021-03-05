@@ -19,6 +19,10 @@
 "invalidData" = "Zły token, symbol lub pin";
 "success" = "Sukces";
 
+//CHOOSE ACCOUNT
+"registerButton" = "Zarejestruj";
+"selectStudent" = "Wybierz ucznia";
+
 //NAVIGATION
 "dashboardButton" = "Start";
 "gradesButton" = "Oceny";
@@ -45,3 +49,7 @@
 
 //LICENCES
 "noLicence" = "Brak licencji";
+
+//ACCOUNT MANAGER
+"addAccount" = "Dodaj konto";
+"chooseAccount" = "Wybierz konto";

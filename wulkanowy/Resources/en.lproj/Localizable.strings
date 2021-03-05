@@ -19,6 +19,10 @@
 "invalidData" = "Wrong token, symbol or pin";
 "success" = "Success";
 
+//CHOOSE ACCOUNT
+"registerButton" = "Register";
+"selectStudent" = "Select student";
+
 //NAVIGATION
 "dashboardButton" = "Dashboard";
 "gradesButton" = "Grades";
@@ -45,3 +49,7 @@
 
 //LICENCES
 "noLicence" = "No licence";
+
+//ACCOUNT MANAGER
+"addAccount" = "Add account";
+"chooseAccount" = "Choose account";
