@@ -68,9 +68,9 @@ struct LoginView: View {
                         print("success")
                         let keychain = Keychain()
                         let keyFingerprint = keychain["keyFingerprint"]
-                        let allStudentsKeys = keychain["allStudentsKeys"]
+                        let allStudentsKeys = keychain["allStudentsKeys"] ?? "[]"
                         
-                        let data = Data(allStudentsKeys!.utf8)
+                        let data = Data(allStudentsKeys.utf8)
                         do {
                             let array = try JSONSerialization.jsonObject(with: data) as! [String]
                             if array.contains(keyFingerprint!) {
