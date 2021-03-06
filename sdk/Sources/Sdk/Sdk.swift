@@ -141,7 +141,48 @@ public class Sdk {
                    let parsedError = self.parseResponse(response) {
                     completionHandler(parsedError)
                 } else {
-                    self.getStudents(symbol: symbol, deviceModel: deviceModel)
+                    let keychain = Keychain()
+                    let receiveValueJSON = try! JSON(data: data)
+                    
+                    // Get private key
+                    guard let privateKeyRawData = self.certificate.getPrivateKeyData(format: .DER),
+                          let privateKeyString = String(data: privateKeyRawData, encoding: .utf8)?
+                            .split(separator: "\n")
+                            .dropFirst()
+                            .dropLast()
+                            .joined()
+                            .data(using: .utf8) else {
+                        return
+                    }
+                    
+                    let privateKeyStringString = String(decoding: privateKeyString, as: UTF8.self)
+                    
+                    let fingerprint = self.certificate.getCertificateFingerprint().lowercased()
+                    
+                    let saveAccount = """
+                    {
+                        "privateKeyString": "\(privateKeyStringString)",
+                        "fingerprint": "\(fingerprint)",
+                        "deviceModel": "\(deviceModel)",
+                        "account": {
+                            "UserName": "\(receiveValueJSON["Envelope"]["UserName"])",
+                            "RestURL": "\(receiveValueJSON["Envelope"]["RestURL"])",
+                            "UserLogin": "\(receiveValueJSON["Envelope"]["UserLogin"])",
+                            "LoginId": "\(receiveValueJSON["Envelope"]["LoginId"])"
+                            }
+                    }
+                    """
+                    keychain["\(receiveValueJSON["Envelope"]["LoginId"])"] = "\(saveAccount)"
+                    let allAccounts = keychain["allAccounts"] ?? "[]"
+                    let data = Data(allAccounts.utf8)
+                    do {
+                        var array = try JSONSerialization.jsonObject(with: data) as! [String]
+                        array.append("\(receiveValueJSON["Envelope"]["LoginId"])")
+                        keychain["allAccounts"] = "\(array)"
+                    } catch {
+                        print(error)
+                    }
+                    hebeRequest(id: "\(receiveValueJSON["Envelope"]["LoginId"])")
                     completionHandler(nil)
                 }
             })
@@ -191,6 +232,8 @@ public class Sdk {
         let keychain = Keychain()
         keychain[string: "keyFingerprint"] = keyFingerprint
         
+        //Boże, proszę, dlaczego to nie działa, błagam
+        
         // Body
         let body: [String: Encodable?] = [
             "AppName": "DzienniczekPlus 2.0",
@@ -224,54 +267,6 @@ public class Sdk {
         let signedRequest = try request.signed(with: certificate)
         
         return URLSession.shared.dataTaskPublisher(for: signedRequest)
-    }
-    
-    private func getStudents(symbol: String, deviceModel: String) {
-        let url = "\(self.endpointURL!)/\(symbol)/api/mobile/register/hebe"
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "GET"
-        
-        let now = Date()
-        var vDate: String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            
-            return "\(dateFormatter.string(from: now)) GMT"
-        }
-        
-        let signatures = getSignatures(request: request, certificate: certificate)
-        request.setValue("\(signatures)", forHTTPHeaderField: "Signature")
-        
-        request.allHTTPHeaderFields = [
-            "User-Agent": "wulkanowy/1 CFNetwork/1220.1 Darwin/20.1.0",
-            "vOS": "iOS",
-            "vDeviceModel": deviceModel,
-            "vAPI": "1",
-            "vDate": vDate,
-            "vCanonicalUrl": "api%2fmobile%2fregister%2fhebe"
-        ]
-        
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                // Handle HTTP request error
-                print(error)
-            } else if let data = data {
-                // Handle HTTP request response
-                let responseBody = String(data: data, encoding: String.Encoding.utf8)
-                
-                let keychain = Keychain()
-                keychain["students"] = responseBody!
-                
-            } else {
-                // Handle unexpected error
-            }
-        }
-
-        task.resume()
-
     }
     
     // MARK: - Helper functions
