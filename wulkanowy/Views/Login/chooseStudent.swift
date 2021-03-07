@@ -20,9 +20,9 @@ struct ChooseStudentView: View {
     @State private var selectedStudent: String = ""
     
     init() {
-        var responseBody = keychain["acctualStudentHebe"]
+        var responseBody = keychain["actualStudentHebe"]
         while responseBody == nil {
-            responseBody = keychain["acctualStudentHebe"]
+            responseBody = keychain["actualStudentHebe"]
         }
         
         let data = Data(responseBody!.utf8)
@@ -43,7 +43,7 @@ struct ChooseStudentView: View {
     
     
     private func saveStudent() {
-        let responseBody = keychain["acctualStudentHebe"]
+        let responseBody = keychain["actualStudentHebe"]
         
         let data = Data(responseBody!.utf8)
         let json = try! JSON(data: data)
@@ -56,7 +56,7 @@ struct ChooseStudentView: View {
             let student = "\(json["Envelope"][i]["Login"]["DisplayName"])"
             if(student == selectedStudent) {
                 //saving student
-                keychain["acctualStudent"] = "\(json["Envelope"][i])"
+                keychain["actualStudent"] = "\(json["Envelope"][i])"
                 break
             }
             i += 1

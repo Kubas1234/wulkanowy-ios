@@ -18,8 +18,8 @@ struct wulkanowyApp: App {
     init() {
         if(isLogged == true) {
             let keychain = Keychain()
-            let acctualStudentId = "\(keychain["acctualStudentId"] ?? "0")"
-            let accountString = keychain[acctualStudentId]
+            let actualStudentId = "\(keychain["actualStudentId"] ?? "0")"
+            let accountString = keychain[actualStudentId]
             let data: Data = Data(accountString!.utf8)
             let account = try! JSON(data: data)
             
@@ -34,7 +34,7 @@ struct wulkanowyApp: App {
                 } else if let data = data {
                     // Handle HTTP request response
                     let responseBody = String(data: data, encoding: String.Encoding.utf8)
-                    keychain["acctualStudentHebe"] = "\(responseBody!)"
+                    keychain["actualStudentHebe"] = "\(responseBody!)"
                 } else {
                     // Handle unexpected error
                 }

@@ -55,6 +55,10 @@ struct AccountManagerView: View {
         return json
     }
     
+    private func setActualAccount() {
+        print("setting...")
+    }
+    
     var body: some View {
         VStack {
             Form {
@@ -62,19 +66,24 @@ struct AccountManagerView: View {
                             .font(.title)) {
                     ForEach(getStudentsNames(), id: \.self) { student in
                         HStack {
-                            Text(student)
+                            Button("\(student)") { setActualAccount() }
+                                .foregroundColor(Color("customControlColor"))
+                            let keychain = Keychain()
+                            if("\(keychain["actualAccountEmail"] ?? "")" == student) {
+                                Image(systemName: "checkmark.circle")
+                                    .foregroundColor(.green)
+                            }
                             Spacer()
                             let image = Image(systemName: "pencil")
                             Button("\(image)") { openEditAccount() }
                                 .sheet(isPresented: $showEditAccountModal, onDismiss: {
-                                        print(self.showEditAccountModal)
                                     }) {
                                         EditAccountView()
                                     }
-                        }
+                        }.buttonStyle(BorderlessButtonStyle())
                     }
                 }
-            }.padding(.bottom)
+            }
             Spacer()
             Button("addAccount") {addAccount()}
                 .font(.headline)
@@ -84,12 +93,12 @@ struct AccountManagerView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.accentColor.opacity(0.1))
                 .cornerRadius(12)
+                .buttonStyle(BorderlessButtonStyle())
                 .padding()
                 .sheet(isPresented: $showLoginModal, onDismiss: {
-                    print(self.showLoginModal)
-                }) {
-                    LoginView()
-                }
+                    }) {
+                        LoginView()
+                    }
         }
     }
 }

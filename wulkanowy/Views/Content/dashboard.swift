@@ -14,8 +14,6 @@ struct DashboardView: View {
     @AppStorage("isLogged") private var isLogged: Bool = false
     
     init() {
-        let keychain = Keychain()
-        
         if(isLogged == true){
             let luckyNumber = getLuckyNumber()
             

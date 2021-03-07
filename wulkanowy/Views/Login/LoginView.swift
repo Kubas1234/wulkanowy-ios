@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KeychainAccess
+import SwiftyJSON
 
 enum AvailableEndpoints: String, CaseIterable {
     case vulcan = "Vulcan"
@@ -65,22 +66,12 @@ struct LoginView: View {
                             buttonValue = String(format: NSLocalizedString("invalidData", comment: "loginButton"))
                         }
                     } else {
-                        print("success")
                         let keychain = Keychain()
-                        let keyFingerprint = keychain["keyFingerprint"]
-                        let allStudentsKeys = keychain["allStudentsKeys"] ?? "[]"
-                        
-                        let data = Data(allStudentsKeys.utf8)
-                        do {
-                            let array = try JSONSerialization.jsonObject(with: data) as! [String]
-                            if array.contains(keyFingerprint!) {
-                                showingAlert.toggle()
-                            } else {
-                                success = true
-                            }
-                        } catch {
-                            print(error)
+                        if(keychain["accountExist"] == "true") {
+                            showingAlert.toggle()
+                            keychain["accountExist"] = "false"
                         }
+                        print("success")
                     }
             }
         }

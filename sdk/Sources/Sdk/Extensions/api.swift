@@ -15,7 +15,7 @@ public func apiRequest(endpointURL: String) -> URLRequest {
     request.httpMethod = "GET"
     
     let keychain = Keychain()
-    let id = keychain["acctualStudentId"] ?? ""
+    let id = keychain["actualStudentId"] ?? ""
     
     let account = keychain[id] ?? "[]"
     let data = Data(account.utf8)

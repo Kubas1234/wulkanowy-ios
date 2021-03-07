@@ -28,12 +28,12 @@ struct EditAccountView: View {
             Button("Done") {done()}
                 .font(.headline)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal)
+                .padding()
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
                 .background(Color.accentColor.opacity(0.1))
                 .cornerRadius(12)
-        }
+        }.padding()
     }
 }
 

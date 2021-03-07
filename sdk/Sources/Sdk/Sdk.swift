@@ -11,6 +11,7 @@ import Combine
 import os
 import KeychainAccess
 import SwiftyJSON
+import SwiftUI
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public class Sdk {
@@ -142,69 +143,92 @@ public class Sdk {
                     completionHandler(parsedError)
                 } else {
                     let keychain = Keychain()
+                    let allAccountsCheck: String! = keychain["allAccounts"] ?? "[]"
                     let receiveValueJSON = try! JSON(data: data)
                     
-                    // Get private key
-                    guard let privateKeyRawData = self.certificate.getPrivateKeyData(format: .DER),
-                          let privateKeyString = String(data: privateKeyRawData, encoding: .utf8)?
-                            .split(separator: "\n")
-                            .dropFirst()
-                            .dropLast()
-                            .joined()
-                            .data(using: .utf8) else {
-                        return
-                    }
-                    
-                    let privateKeyStringString = String(decoding: privateKeyString, as: UTF8.self)
-                    
-                    let fingerprint = self.certificate.getCertificateFingerprint().lowercased()
-                    
-                    let saveAccount = """
-                    {
-                        "acctualStudent": "0",
-                        "privateKeyString": "\(privateKeyStringString)",
-                        "fingerprint": "\(fingerprint)",
-                        "deviceModel": "\(deviceModel)",
-                        "account": {
-                            "UserName": "\(receiveValueJSON["Envelope"]["UserName"])",
-                            "RestURL": "\(receiveValueJSON["Envelope"]["RestURL"])",
-                            "UserLogin": "\(receiveValueJSON["Envelope"]["UserLogin"])",
-                            "LoginId": "\(receiveValueJSON["Envelope"]["LoginId"])"
+                    //parsing allAccounts to array
+                    var allAccountsArray: [String] = []
+                    if(allAccountsCheck != "[]"){
+                        let data = Data(allAccountsCheck.utf8)
+                        do {
+                            let ids = try JSONSerialization.jsonObject(with: data) as! [String]
+                            for id in ids {
+                                let student = keychain[id]
+                                let data = Data(student!.utf8)
+                                let accountParsed = try! JSON(data: data)
+                                allAccountsArray.append("\(accountParsed["account"]["UserLogin"])")
                             }
-                    }
-                    """
-                    
-                    keychain["\(receiveValueJSON["Envelope"]["LoginId"])"] = "\(saveAccount)"
-                    let allAccounts = keychain["allAccounts"] ?? "[]"
-                    let data = Data(allAccounts.utf8)
-                    do {
-                        var array = try JSONSerialization.jsonObject(with: data) as! [String]
-                        array.append("\(receiveValueJSON["Envelope"]["LoginId"])")
-                        keychain["allAccounts"] = "\(array)"
-                    } catch {
-                        print(error)
-                    }
-                    
-                    keychain["acctualStudentId"] = "\(receiveValueJSON["Envelope"]["LoginId"])"
-                    
-                    let endpointURL: String = "\(receiveValueJSON["Envelope"]["RestURL"])api/mobile/register/hebe"
-                    
-                    let apiResponseRequest = apiRequest(endpointURL: endpointURL)
-                    let session = URLSession.shared
-                    session.dataTask(with: apiResponseRequest) { (data, response, error) in
-                        if let error = error {
-                            // Handle HTTP request error
+                        } catch {
                             print(error)
-                        } else if let data = data {
-                            // Handle HTTP request response
-                            let responseBody = String(data: data, encoding: String.Encoding.utf8)
-                            
-                            keychain["acctualStudentHebe"] = "\(responseBody!)"
-                            
-                        } else {
-                            // Handle unexpected error
                         }
-                    }.resume()
+                    }
+                    
+                    if allAccountsArray.contains("\(receiveValueJSON["Envelope"]["UserName"])") {
+                        keychain["accountExist"] = "true"
+                    } else {
+                        // Get private key
+                        guard let privateKeyRawData = self.certificate.getPrivateKeyData(format: .DER),
+                              let privateKeyString = String(data: privateKeyRawData, encoding: .utf8)?
+                                .split(separator: "\n")
+                                .dropFirst()
+                                .dropLast()
+                                .joined()
+                                .data(using: .utf8) else {
+                            return
+                        }
+                        
+                        let privateKeyStringString = String(decoding: privateKeyString, as: UTF8.self)
+                        
+                        let fingerprint = self.certificate.getCertificateFingerprint().lowercased()
+                        
+                        let saveAccount = """
+                        {
+                            "actualStudent": "0",
+                            "privateKeyString": "\(privateKeyStringString)",
+                            "fingerprint": "\(fingerprint)",
+                            "deviceModel": "\(deviceModel)",
+                            "account": {
+                                "UserName": "\(receiveValueJSON["Envelope"]["UserName"])",
+                                "RestURL": "\(receiveValueJSON["Envelope"]["RestURL"])",
+                                "UserLogin": "\(receiveValueJSON["Envelope"]["UserLogin"])",
+                                "LoginId": "\(receiveValueJSON["Envelope"]["LoginId"])"
+                                }
+                        }
+                        """
+                        
+                        keychain["\(receiveValueJSON["Envelope"]["LoginId"])"] = "\(saveAccount)"
+                        let allAccounts = keychain["allAccounts"] ?? "[]"
+                        let data = Data(allAccounts.utf8)
+                        do {
+                            var array = try JSONSerialization.jsonObject(with: data) as! [String]
+                            array.append("\(receiveValueJSON["Envelope"]["LoginId"])")
+                            keychain["allAccounts"] = "\(array)"
+                        } catch {
+                            print(error)
+                        }
+                        
+                        keychain["actualStudentId"] = "\(receiveValueJSON["Envelope"]["LoginId"])"
+                        keychain["actualAccountEmail"] = "\(receiveValueJSON["Envelope"]["UserName"])"
+                        
+                        let endpointURL: String = "\(receiveValueJSON["Envelope"]["RestURL"])api/mobile/register/hebe"
+                        
+                        let apiResponseRequest = apiRequest(endpointURL: endpointURL)
+                        let session = URLSession.shared
+                        session.dataTask(with: apiResponseRequest) { (data, response, error) in
+                            if let error = error {
+                                // Handle HTTP request error
+                                print(error)
+                            } else if let data = data {
+                                // Handle HTTP request response
+                                let responseBody = String(data: data, encoding: String.Encoding.utf8)
+                                
+                                keychain["actualStudentHebe"] = "\(responseBody!)"
+                                
+                            } else {
+                                // Handle unexpected error
+                            }
+                        }.resume()
+                    }
                     completionHandler(nil)
                 }
             })
