@@ -16,28 +16,28 @@ struct AccountManagerView: View {
     
     
     private func getStudentsNames() -> [String] {
-        //getting allStudentsKeys
+        //getting all accounts
         let keychain = Keychain()
-        let allStudentsKeys: String! = keychain["allStudentsKeys"] ?? "[]"
+        let allAccounts: String! = keychain["allAccounts"] ?? "[]"
         
-        //parsing allStudentsKeys to array
-        var allStudents: [String] = []
-        if(allStudentsKeys != "[]"){
-            let data = Data(allStudentsKeys.utf8)
+        //parsing allAccounts to array
+        var allAccountsArray: [String] = []
+        if(allAccounts != "[]"){
+            let data = Data(allAccounts.utf8)
             do {
-                let keys = try JSONSerialization.jsonObject(with: data) as! [String]
-                for key in keys {
-                    let student = keychain["student-\(key)"]
+                let ids = try JSONSerialization.jsonObject(with: data) as! [String]
+                for id in ids {
+                    let student = keychain[id]
                     let data = Data(student!.utf8)
-                    let studentParsed = try! JSON(data: data)
-                    allStudents.append("\(studentParsed["Login"]["DisplayName"])")
+                    let accountParsed = try! JSON(data: data)
+                    allAccountsArray.append("\(accountParsed["account"]["UserLogin"])")
                 }
             } catch {
                 print(error)
             }
         }
         
-        return allStudents
+        return allAccountsArray
     }
     
     private func addAccount() {
@@ -66,11 +66,11 @@ struct AccountManagerView: View {
                             Spacer()
                             let image = Image(systemName: "pencil")
                             Button("\(image)") { openEditAccount() }
-                            .sheet(isPresented: $showEditAccountModal, onDismiss: {
-                                    print(self.showEditAccountModal)
-                                }) {
-                                    EditAccountView()
-                                }
+                                .sheet(isPresented: $showEditAccountModal, onDismiss: {
+                                        print(self.showEditAccountModal)
+                                    }) {
+                                        EditAccountView()
+                                    }
                         }
                     }
                 }

@@ -10,16 +10,19 @@ import KeychainAccess
 import Sdk
 
 struct DashboardView: View {
-    init() {
-        let keychain = Keychain()
-        let key = keychain["privateKey"]
-        
-        let luckyNumber = getLuckyNumber()
-        print(luckyNumber)
-        
-    }
     @State private var showModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
+    
+    init() {
+        let keychain = Keychain()
+        
+        if(isLogged == true){
+            let luckyNumber = getLuckyNumber()
+            
+            print(luckyNumber)
+        }
+        
+    }
     
     var body: some View {
         if(isLogged == false){

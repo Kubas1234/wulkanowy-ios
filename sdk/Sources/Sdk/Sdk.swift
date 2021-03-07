@@ -161,6 +161,7 @@ public class Sdk {
                     
                     let saveAccount = """
                     {
+                        "acctualStudent": "0",
                         "privateKeyString": "\(privateKeyStringString)",
                         "fingerprint": "\(fingerprint)",
                         "deviceModel": "\(deviceModel)",
@@ -172,6 +173,7 @@ public class Sdk {
                             }
                     }
                     """
+                    
                     keychain["\(receiveValueJSON["Envelope"]["LoginId"])"] = "\(saveAccount)"
                     let allAccounts = keychain["allAccounts"] ?? "[]"
                     let data = Data(allAccounts.utf8)
@@ -182,7 +184,27 @@ public class Sdk {
                     } catch {
                         print(error)
                     }
-                    hebeRequest(id: "\(receiveValueJSON["Envelope"]["LoginId"])")
+                    
+                    keychain["acctualStudentId"] = "\(receiveValueJSON["Envelope"]["LoginId"])"
+                    
+                    let endpointURL: String = "\(receiveValueJSON["Envelope"]["RestURL"])api/mobile/register/hebe"
+                    
+                    let apiResponseRequest = apiRequest(endpointURL: endpointURL)
+                    let session = URLSession.shared
+                    session.dataTask(with: apiResponseRequest) { (data, response, error) in
+                        if let error = error {
+                            // Handle HTTP request error
+                            print(error)
+                        } else if let data = data {
+                            // Handle HTTP request response
+                            let responseBody = String(data: data, encoding: String.Encoding.utf8)
+                            
+                            keychain["acctualStudentHebe"] = "\(responseBody!)"
+                            
+                        } else {
+                            // Handle unexpected error
+                        }
+                    }.resume()
                     completionHandler(nil)
                 }
             })

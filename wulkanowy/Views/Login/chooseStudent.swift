@@ -20,9 +20,9 @@ struct ChooseStudentView: View {
     @State private var selectedStudent: String = ""
     
     init() {
-        var responseBody = keychain["students"]
+        var responseBody = keychain["acctualStudentHebe"]
         while responseBody == nil {
-            responseBody = keychain["students"]
+            responseBody = keychain["acctualStudentHebe"]
         }
         
         let data = Data(responseBody!.utf8)
@@ -43,7 +43,7 @@ struct ChooseStudentView: View {
     
     
     private func saveStudent() {
-        let responseBody = keychain["students"]
+        let responseBody = keychain["acctualStudentHebe"]
         
         let data = Data(responseBody!.utf8)
         let json = try! JSON(data: data)
@@ -55,27 +55,8 @@ struct ChooseStudentView: View {
         while true {
             let student = "\(json["Envelope"][i]["Login"]["DisplayName"])"
             if(student == selectedStudent) {
-                
-                //adding student key to allStudentsKeys
-                let keyFingerprint: String! = keychain["keyFingerprint"]
-                let allStudentsKeys: String! = keychain["allStudentsKeys"] ?? ""
-                
-                //parsing allStudentsKeys to array
-                var allStudents: [String] = []
-                let data = Data(allStudentsKeys!.utf8)
-                do {
-                    let array = try JSONSerialization.jsonObject(with: data) as! [String]
-                    allStudents = array
-                } catch {
-                    print(error)
-                }
-                allStudents.append(keyFingerprint!)
-                keychain["allStudentsKeys"] = "\(allStudents)"
-                
-                
                 //saving student
-                keychain["student-\(String(describing: keyFingerprint!))"] = "\(json["Envelope"][i])"
-                
+                keychain["acctualStudent"] = "\(json["Envelope"][i])"
                 break
             }
             i += 1
