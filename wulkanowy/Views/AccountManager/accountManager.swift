@@ -8,12 +8,12 @@
 import SwiftUI
 import KeychainAccess
 import SwiftyJSON
+import Sdk
 
 struct AccountManagerView: View {
     @State private var showLoginModal = false
     @State private var showEditAccountModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
-    
     
     private func getStudentsNames() -> [String] {
         //getting all accounts
@@ -52,8 +52,31 @@ struct AccountManagerView: View {
         return json
     }
     
-    private func setActualAccount() {
-        print("setting...")
+    private func setActualAccount(id: String) {
+        let keychain = Keychain()
+        let accountData = keychain["\(id)"] ?? "{}"
+        let data: Data = Data(accountData.utf8)
+        let accountJSON = try! JSON(data: data)
+        let RestURL = "\(accountJSON["account"]["RestURL"])api/mobile/register/hebe"
+        keychain["actualAccountId"] = "\(id)"
+        keychain["actualAccountEmail"] = "\(accountJSON["account"]["UserName"])"
+        
+        let apiResponseRequest = apiRequest(endpointURL: "\(RestURL)")
+        let session = URLSession.shared
+        session.dataTask(with: apiResponseRequest) { (data, response, error) in
+            if let error = error {
+                // Handle HTTP request error
+                print(error)
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseBody = String(data: data, encoding: String.Encoding.utf8)
+                
+                keychain["actualStudentHebe"] = "\(responseBody!)"
+                
+            } else {
+                // Handle unexpected error
+            }
+        }.resume()
     }
     
     var body: some View {
@@ -68,7 +91,7 @@ struct AccountManagerView: View {
                             let data: Data = Data(studentString.utf8)
                             let studentJSON = try! JSON(data: data)
                             let studentEmail = "\(studentJSON["account"]["UserName"])"
-                            Button("\(studentEmail)") { setActualAccount() }
+                            Button("\(studentEmail)") { setActualAccount(id: student) }
                                 .foregroundColor(Color("customControlColor"))
                             if("\(keychain["actualAccountId"] ?? "0")" == "\(student)") {
                                 Image(systemName: "checkmark.circle")

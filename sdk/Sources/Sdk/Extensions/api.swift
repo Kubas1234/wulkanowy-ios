@@ -20,7 +20,7 @@ public func apiRequest(endpointURL: String) -> URLRequest {
     let account = keychain[id] ?? "[]"
     let data = Data(account.utf8)
     let accountJSON = try! JSON(data: data)
-    
+
     let fingerprint: String = "\(accountJSON["fingerprint"])"
     let privateKeyStringString: String = "\(accountJSON["privateKeyString"])"
     let privateKeyString: Data = Data(privateKeyStringString.utf8)

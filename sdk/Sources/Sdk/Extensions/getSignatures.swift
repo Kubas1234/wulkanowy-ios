@@ -15,18 +15,19 @@ func getSignatures(request: URLRequest, fingerprint: String, privateKeyString: D
     }
     
      // Create SecKey
-     let attributes = [
+    let attributes = [
          kSecAttrKeyType: kSecAttrKeyTypeRSA,
          kSecAttrKeyClass: kSecAttrKeyClassPrivate,
-     ]
-     guard let privateKeyData = Data(base64Encoded: privateKeyString),
+    ]
+    
+    guard let privateKeyData = Data(base64Encoded: privateKeyString),
            let secKey = SecKeyCreateWithData(privateKeyData as NSData, attributes as NSDictionary, nil) else {
          return "\(Sdk.APIError.noPrivateKey)"
-     }
-    
+    }
+
     // Get fingerprint
     guard let signatureValues = Sdk.Signer.getSignatureValues(body: request.httpBody, url: urlString, privateKey: secKey, fingerprint: fingerprint) else {
-        return "\(Sdk.APIError.noPrivateKey)"
+        return "noFingerprint"
     }
     
     // Headers
