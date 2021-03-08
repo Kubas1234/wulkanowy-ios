@@ -61,17 +61,14 @@ struct LoginView: View {
                             
                         case "deviceExist":
                             showingAlert.toggle()
+                            success = false
                         
                         default:
                             buttonValue = String(format: NSLocalizedString("invalidData", comment: "loginButton"))
                         }
                     } else {
-                        let keychain = Keychain()
-                        if(keychain["accountExist"] == "true") {
-                            showingAlert.toggle()
-                            keychain["accountExist"] = "false"
-                        }
                         print("success")
+                        success = true
                     }
             }
         }

@@ -25,12 +25,9 @@ struct AccountManagerView: View {
         if(allAccounts != "[]"){
             let data = Data(allAccounts.utf8)
             do {
-                let ids = try JSONSerialization.jsonObject(with: data) as! [String]
+                let ids = try JSONSerialization.jsonObject(with: data) as! [Int]
                 for id in ids {
-                    let student = keychain[id]
-                    let data = Data(student!.utf8)
-                    let accountParsed = try! JSON(data: data)
-                    allAccountsArray.append("\(accountParsed["account"]["UserLogin"])")
+                    allAccountsArray.append("\(id)")
                 }
             } catch {
                 print(error)
@@ -65,11 +62,15 @@ struct AccountManagerView: View {
                 Section(header: Text("chooseAccount")
                             .font(.title)) {
                     ForEach(getStudentsNames(), id: \.self) { student in
+                        let keychain = Keychain()
                         HStack {
-                            Button("\(student)") { setActualAccount() }
+                            let studentString = "\(keychain[student] ?? "{}")"
+                            let data: Data = Data(studentString.utf8)
+                            let studentJSON = try! JSON(data: data)
+                            let studentEmail = "\(studentJSON["account"]["UserName"])"
+                            Button("\(studentEmail)") { setActualAccount() }
                                 .foregroundColor(Color("customControlColor"))
-                            let keychain = Keychain()
-                            if("\(keychain["actualAccountEmail"] ?? "")" == student) {
+                            if("\(keychain["actualAccountId"] ?? "0")" == "\(student)") {
                                 Image(systemName: "checkmark.circle")
                                     .foregroundColor(.green)
                             }

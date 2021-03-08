@@ -142,30 +142,27 @@ public class Sdk {
                    let parsedError = self.parseResponse(response) {
                     completionHandler(parsedError)
                 } else {
-                    let keychain = Keychain()
-                    let allAccountsCheck: String! = keychain["allAccounts"] ?? "[]"
-                    let receiveValueJSON = try! JSON(data: data)
-                    
-                    //parsing allAccounts to array
-                    var allAccountsArray: [String] = []
-                    if(allAccountsCheck != "[]"){
+                    do {
+                        let keychain = Keychain()
+                        let allAccountsCheck: String! = keychain["allAccounts"] ?? "[]"
+                        let receiveValueJSON = try! JSON(data: data)
+                        
+                        //parsing allAccounts to array
                         let data = Data(allAccountsCheck.utf8)
                         do {
-                            let ids = try JSONSerialization.jsonObject(with: data) as! [String]
-                            for id in ids {
-                                let student = keychain[id]
-                                let data = Data(student!.utf8)
-                                let accountParsed = try! JSON(data: data)
-                                allAccountsArray.append("\(accountParsed["account"]["UserLogin"])")
+                            var ids = try JSONSerialization.jsonObject(with: data) as! [Int]
+                            if(ids == [])
+                            {
+                                ids = [0]
+                            } else {
+                                ids.append(ids.last! + 1)
                             }
+                            keychain["allAccounts"] = "\(ids)"
+                            
                         } catch {
                             print(error)
                         }
-                    }
-                    
-                    if allAccountsArray.contains("\(receiveValueJSON["Envelope"]["UserName"])") {
-                        keychain["accountExist"] = "true"
-                    } else {
+                        
                         // Get private key
                         guard let privateKeyRawData = self.certificate.getPrivateKeyData(format: .DER),
                               let privateKeyString = String(data: privateKeyRawData, encoding: .utf8)?
@@ -196,18 +193,14 @@ public class Sdk {
                         }
                         """
                         
-                        keychain["\(receiveValueJSON["Envelope"]["LoginId"])"] = "\(saveAccount)"
-                        let allAccounts = keychain["allAccounts"] ?? "[]"
-                        let data = Data(allAccounts.utf8)
-                        do {
-                            var array = try JSONSerialization.jsonObject(with: data) as! [String]
-                            array.append("\(receiveValueJSON["Envelope"]["LoginId"])")
-                            keychain["allAccounts"] = "\(array)"
-                        } catch {
-                            print(error)
-                        }
+                        let ids = keychain["allAccounts"]
+                        let dataIds: Data = Data(ids!.utf8)
+                        let idsArray = try JSONSerialization.jsonObject(with: dataIds) as! [Int]
+                        let id = idsArray.last
                         
-                        keychain["actualStudentId"] = "\(receiveValueJSON["Envelope"]["LoginId"])"
+                        keychain["\(id!)"] = "\(saveAccount)"
+
+                        keychain["actualStudentId"] = "\(id!)"
                         keychain["actualAccountEmail"] = "\(receiveValueJSON["Envelope"]["UserName"])"
                         
                         let endpointURL: String = "\(receiveValueJSON["Envelope"]["RestURL"])api/mobile/register/hebe"
@@ -228,9 +221,11 @@ public class Sdk {
                                 // Handle unexpected error
                             }
                         }.resume()
+                    } catch {
+                        print(error)
                     }
-                    completionHandler(nil)
                 }
+                completionHandler(nil)
             })
             .store(in: &cancellables)
     }
