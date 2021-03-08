@@ -14,6 +14,8 @@ struct AccountManagerView: View {
     @State private var showLoginModal = false
     @State private var showEditAccountModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
+    @State private var accounts: [String] = [""]
+    @State private var actualId: String = "0"
     
     private func getStudentsNames() -> [String] {
         //getting all accounts
@@ -59,6 +61,7 @@ struct AccountManagerView: View {
         let accountJSON = try! JSON(data: data)
         let RestURL = "\(accountJSON["account"]["RestURL"])api/mobile/register/hebe"
         keychain["actualAccountId"] = "\(id)"
+        self.actualId = "\(id)"
         keychain["actualAccountEmail"] = "\(accountJSON["account"]["UserName"])"
         
         let apiResponseRequest = apiRequest(endpointURL: "\(RestURL)")
@@ -77,6 +80,8 @@ struct AccountManagerView: View {
                 // Handle unexpected error
             }
         }.resume()
+        
+        accounts = getStudentsNames()
     }
     
     var body: some View {
@@ -84,7 +89,8 @@ struct AccountManagerView: View {
             Form {
                 Section(header: Text("chooseAccount")
                             .font(.title)) {
-                    ForEach(getStudentsNames(), id: \.self) { student in
+                    
+                    ForEach(accounts, id: \.self) { student in
                         let keychain = Keychain()
                         HStack {
                             let studentString = "\(keychain[student] ?? "{}")"
@@ -93,7 +99,7 @@ struct AccountManagerView: View {
                             let studentEmail = "\(studentJSON["account"]["UserName"])"
                             Button("\(studentEmail)") { setActualAccount(id: student) }
                                 .foregroundColor(Color("customControlColor"))
-                            if("\(keychain["actualAccountId"] ?? "0")" == "\(student)") {
+                            if("\(actualId)" == "\(student)") {
                                 Image(systemName: "checkmark.circle")
                                     .foregroundColor(.green)
                             }
@@ -123,6 +129,10 @@ struct AccountManagerView: View {
                     }) {
                         LoginView()
                     }
+        }.onAppear {
+            let keychain = Keychain()
+            self.accounts = getStudentsNames()
+            self.actualId = "\(keychain["actualAccountId"] ?? "0")"
         }
     }
 }
