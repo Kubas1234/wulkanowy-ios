@@ -58,6 +58,7 @@ struct OnboardingView: View {
                     .fontWeight(.semibold)
                     .padding()
                     .multilineTextAlignment(.center)
+                    .frame(height: 100)
                 
                 Spacer()
                 HStack {

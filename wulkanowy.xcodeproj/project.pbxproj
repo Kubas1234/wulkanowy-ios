@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0B2AFD25F78A6A009EABEC /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5C0B2AFC25F78A6A009EABEC /* KeychainAccess */; };
 		5C1794B425E8FDFB007AD91A /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794B325E8FDFB007AD91A /* messages.swift */; };
 		5C1794B825E8FE08007AD91A /* notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794B725E8FE08007AD91A /* notes.swift */; };
 		5C1794BC25E8FE19007AD91A /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794BB25E8FE19007AD91A /* settings.swift */; };
 		5C1794C025E8FE27007AD91A /* about.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794BF25E8FE27007AD91A /* about.swift */; };
-		5C1794CD25E90DBD007AD91A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1794CC25E90DBD007AD91A /* KeychainAccess */; };
 		5C1CFA7A25EA32AE0047286F /* ghImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CFA7925EA32AE0047286F /* ghImage.swift */; };
 		5C2D331025E64F3C000253AC /* grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D330F25E64F3C000253AC /* grades.swift */; };
 		5C2D331425E650EC000253AC /* calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D331325E650EC000253AC /* calendar.swift */; };
@@ -120,10 +120,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCAE31625DA4CDD00D87580 /* OpenSSL in Frameworks */,
-				5C1794CD25E90DBD007AD91A /* KeychainAccess in Frameworks */,
 				5C2D9A3225F75A760053CB9F /* Sdk in Frameworks */,
 				5C42E2A225EE656E0048DDCD /* SwiftyJSON in Frameworks */,
 				5C89C90625EA7996000B5816 /* SwiftUIEKtensions in Frameworks */,
+				5C0B2AFD25F78A6A009EABEC /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,10 +314,10 @@
 			name = wulkanowy;
 			packageProductDependencies = (
 				5CCAE31525DA4CDD00D87580 /* OpenSSL */,
-				5C1794CC25E90DBD007AD91A /* KeychainAccess */,
 				5C89C90525EA7996000B5816 /* SwiftUIEKtensions */,
 				5C42E2A125EE656E0048DDCD /* SwiftyJSON */,
 				5C2D9A3125F75A760053CB9F /* Sdk */,
+				5C0B2AFC25F78A6A009EABEC /* KeychainAccess */,
 			);
 			productName = wulkanowy;
 			productReference = F4C6D9042544E17400F8903A /* wulkanowy.app */;
@@ -393,9 +393,9 @@
 			mainGroup = F4C6D8FB2544E17300F8903A;
 			packageReferences = (
 				5CCAE31025DA4CCA00D87580 /* XCRemoteSwiftPackageReference "OpenSSL" */,
-				5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				5C89C90425EA7996000B5816 /* XCRemoteSwiftPackageReference "SwiftUIEKtensions" */,
 				5C42E2A025EE656E0048DDCD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				5C0B2AFB25F78A6A009EABEC /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = F4C6D9052544E17400F8903A /* Products */;
 			projectDirPath = "";
@@ -544,6 +544,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -606,6 +610,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -790,12 +798,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		5C0B2AFB25F78A6A009EABEC /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.1;
+				minimumVersion = 4.2.2;
 			};
 		};
 		5C42E2A025EE656E0048DDCD /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
@@ -825,9 +833,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5C1794CC25E90DBD007AD91A /* KeychainAccess */ = {
+		5C0B2AFC25F78A6A009EABEC /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C1794CB25E90DBD007AD91A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 5C0B2AFB25F78A6A009EABEC /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		5C2D9A3125F75A760053CB9F /* Sdk */ = {
