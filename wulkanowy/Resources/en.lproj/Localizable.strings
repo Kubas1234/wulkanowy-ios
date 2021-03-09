@@ -6,6 +6,19 @@
   
 */
 
+//ONBOARDING
+"onboardingTitle" = "Welcome in Wulkanowy!";
+
+"notificationsOnboarding" = "Notifications";
+"messagesOnboarding" = "Messages";
+"fast" = "Fast";
+
+"notificationsOnboardingContent" = "Forget about saving exams in calendar";
+"messagesOnboardingContent" = "Simple contact with your favorite teachers";
+"fastContent" = "Fast, like Sonic";
+
+"continueButton" = "Let's go!";
+
 //LOGIN SCREEN
 "loginTitle" = "Log In";
 "token" = "Token";

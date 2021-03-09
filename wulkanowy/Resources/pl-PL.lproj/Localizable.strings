@@ -6,6 +6,19 @@
   
 */
 
+//ONBOARDING
+"onboardingTitle" = "Witaj w Wulkanowym!";
+
+"notificationsOnboarding" = "Powiadomienia";
+"messagesOnboarding" = "Wiadomości";
+"fast" = "Prędkość";
+
+"notificationsOnboardingContent" = "Zapomnij o zapisywaniu sprawdzianów w kalendarzyku";
+"messagesOnboardingContent" = "Prosty kontakt z twoimi ulubionymi nauczycielami";
+"fastContent" = "Szybki, niczym Sonic";
+
+"continueButton" = "Zaczynajmy!";
+
 //LOGIN SCREEN
 "loginTitle" = "Logowanie";
 "token" = "Token";

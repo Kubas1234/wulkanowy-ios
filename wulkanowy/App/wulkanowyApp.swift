@@ -14,6 +14,7 @@ import KeychainAccess
 @main
 struct wulkanowyApp: App {
     @AppStorage("isLogged") private var isLogged: Bool = false
+    @AppStorage("needsAppOnboarding") private var needsAppOnboarding: Bool = true
     
     init() {
         if(isLogged == true) {
@@ -44,7 +45,11 @@ struct wulkanowyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationBarView()
+            if(needsAppOnboarding == true) {
+                OnboardingView()
+            } else {
+                NavigationBarView()
+            }
         }
     }
 }

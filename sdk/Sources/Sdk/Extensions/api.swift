@@ -1,13 +1,15 @@
 //
 //  api.swift
-//  
+//
 //
 //  Created by Tomasz on 02/03/2021.
 //
 
 import Foundation
+import SwiftUI
 import KeychainAccess
 import SwiftyJSON
+
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public func apiRequest(endpointURL: String) -> URLRequest {
