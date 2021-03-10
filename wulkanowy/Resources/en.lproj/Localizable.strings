@@ -7,7 +7,7 @@
 */
 
 //ONBOARDING
-"onboardingTitle" = "Welcome in Wulkanowy!";
+"onboardingTitle" = "Welcome to Wulkanowy!";
 
 "notificationsOnboarding" = "Notifications";
 "messagesOnboarding" = "Messages";
@@ -15,7 +15,7 @@
 
 "notificationsOnboardingContent" = "Forget about saving exams in calendar";
 "messagesOnboardingContent" = "Simple contact with your favorite teachers";
-"fastContent" = "Fast, like Sonic";
+"fastContent" = "Fast as Sonic";
 
 "continueButton" = "Let's go!";
 

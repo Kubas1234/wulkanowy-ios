@@ -43,7 +43,9 @@ struct AccountManagerView: View {
         self.showLoginModal = true
     }
     
-    private func openEditAccount() {
+    private func openEditAccount(id: String) {
+        let keychain = Keychain()
+        keychain["editAccountId"] = id
         self.showEditAccountModal = true
     }
     
@@ -84,6 +86,14 @@ struct AccountManagerView: View {
         accounts = getStudentsNames()
     }
     
+    private func getUsername(student: JSON) -> String {
+        if("\(student["customUsername"])" == "null") {
+            return "\(student["account"]["UserName"])"
+        } else {
+            return "\(student["customUsername"])"
+        }
+    }
+    
     var body: some View {
         VStack {
             Form {
@@ -96,7 +106,8 @@ struct AccountManagerView: View {
                             let studentString = "\(keychain[student] ?? "{}")"
                             let data: Data = Data(studentString.utf8)
                             let studentJSON = try! JSON(data: data)
-                            let studentEmail = "\(studentJSON["account"]["UserName"])"
+                            let studentEmail = getUsername(student: studentJSON)
+                            
                             Button("\(studentEmail)") { setActualAccount(id: student) }
                                 .foregroundColor(Color("customControlColor"))
                             if("\(actualId)" == "\(student)") {
@@ -105,7 +116,7 @@ struct AccountManagerView: View {
                             }
                             Spacer()
                             let image = Image(systemName: "pencil")
-                            Button("\(image)") { openEditAccount() }
+                            Button("\(image)") { openEditAccount(id: student) }
                                 .sheet(isPresented: $showEditAccountModal, onDismiss: {
                                     }) {
                                         EditAccountView()

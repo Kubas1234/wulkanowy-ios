@@ -181,6 +181,7 @@ public class Sdk {
                         let saveAccount = """
                         {
                             "actualStudent": "0",
+                            "customUsername": "null",
                             "privateKeyString": "\(privateKeyStringString)",
                             "fingerprint": "\(fingerprint)",
                             "deviceModel": "\(deviceModel)",

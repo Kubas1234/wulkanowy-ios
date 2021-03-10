@@ -12,17 +12,23 @@ import SwiftyJSON
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public func getLuckyNumber() -> Int {
     let keychain = Keychain()
-    let actualStudent = keychain["actualStudent"] ?? "{}"
-    let data: Data = Data(actualStudent.utf8)
-    let actualStudentJSON = try! JSON(data: data)
-    let Id = "\(actualStudentJSON["ConstituentUnit"]["Id"])"
+    let actualStudentId = "\(keychain["actualStudentId"] ?? "0")"
+    let actualAccount = keychain[actualStudentId]
+    let dataAccount: Data = Data(actualAccount!.utf8)
+    let actualAccountJSON = try! JSON(data: dataAccount)
+    let studentId = Int("\(actualAccountJSON["actualStudent"])")
+    let actualStudentHebe = keychain["actualStudentHebe"]
+    let dataHebe: Data = Data(actualStudentHebe!.utf8)
+    let actualStudentHebeJSON = try! JSON(data: dataHebe)
+    let actualStudent = actualStudentHebeJSON["Envelope"][studentId!]
+    let Id = "\(actualStudent["ConstituentUnit"]["Id"])"
     
     let date = Date()
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
     let day = formatter.string(from: date)
     
-    let RestURL = "\(actualStudentJSON["Unit"]["RestURL"])/mobile/school/lucky?constituentId=\(Id)&day=\(day)"
+    let RestURL = "\(actualStudent["Unit"]["RestURL"])/mobile/school/lucky?constituentId=\(Id)&day=\(day)"
     
     let apiResponseRequest = apiRequest(endpointURL: RestURL)
     

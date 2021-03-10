@@ -56,7 +56,13 @@ struct ChooseStudentView: View {
             let student = "\(json["Envelope"][i]["Login"]["DisplayName"])"
             if(student == selectedStudent) {
                 //saving student
-                keychain["actualStudent"] = "\(json["Envelope"][i])"
+                let id = "\(keychain["actualStudentId"] ?? "0")"
+                let account = keychain[id]
+                let data: Data = Data(account!.utf8)
+                var accountJSON = try! JSON(data: data)
+                accountJSON["actualStudent"] = JSON(i)
+                print(accountJSON)
+                keychain[id] = "\(accountJSON)"
                 break
             }
             i += 1
