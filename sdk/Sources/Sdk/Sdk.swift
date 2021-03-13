@@ -7,9 +7,9 @@
 
 
 import Foundation
+import KeychainAccess
 import Combine
 import os
-import KeychainAccess
 import SwiftyJSON
 import SwiftUI
 
@@ -206,7 +206,7 @@ public class Sdk {
                         
                         let endpointURL: String = "\(receiveValueJSON["Envelope"]["RestURL"])api/mobile/register/hebe"
                         
-                        let apiResponseRequest = apiRequest(endpointURL: endpointURL)
+                        let apiResponseRequest = apiRequest(endpointURL: endpointURL, id: "\(id!)")
                         let session = URLSession.shared
                         session.dataTask(with: apiResponseRequest) { (data, response, error) in
                             if let error = error {

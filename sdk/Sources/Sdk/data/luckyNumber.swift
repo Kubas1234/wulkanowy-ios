@@ -30,7 +30,7 @@ public func getLuckyNumber() -> Int {
     
     let RestURL = "\(actualStudent["Unit"]["RestURL"])/mobile/school/lucky?constituentId=\(Id)&day=\(day)"
     
-    let apiResponseRequest = apiRequest(endpointURL: RestURL)
+    let apiResponseRequest = apiRequest(endpointURL: RestURL, id: actualStudentId)
     
     let session = URLSession.shared
     session.dataTask(with: apiResponseRequest) { (data, response, error) in

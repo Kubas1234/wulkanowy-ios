@@ -26,7 +26,7 @@ struct wulkanowyApp: App {
             
             let endpointURL: String = "\(account["account"]["RestURL"])api/mobile/register/hebe"
             
-            let apiResponseRequest = apiRequest(endpointURL: endpointURL)
+            let apiResponseRequest = apiRequest(endpointURL: endpointURL, id: actualStudentId)
             let session = URLSession.shared
             session.dataTask(with: apiResponseRequest) { (data, response, error) in
                 if let error = error {

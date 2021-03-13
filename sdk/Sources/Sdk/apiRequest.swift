@@ -1,5 +1,5 @@
 //
-//  api.swift
+//  apiRequest.swift
 //
 //
 //  Created by Tomasz on 02/03/2021.
@@ -12,12 +12,11 @@ import KeychainAccess
 
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
-public func apiRequest(endpointURL: String) -> URLRequest {
+public func apiRequest(endpointURL: String, id: String) -> URLRequest {
     var request = URLRequest(url: URL(string: endpointURL)!)
     request.httpMethod = "GET"
     
     let keychain = Keychain()
-    let id = keychain["actualStudentId"] ?? ""
     
     let account = keychain[id] ?? "[]"
     let data = Data(account.utf8)

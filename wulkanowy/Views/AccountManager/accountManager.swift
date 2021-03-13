@@ -66,7 +66,7 @@ struct AccountManagerView: View {
         self.actualId = "\(id)"
         keychain["actualAccountEmail"] = "\(accountJSON["account"]["UserName"])"
         
-        let apiResponseRequest = apiRequest(endpointURL: "\(RestURL)")
+        let apiResponseRequest = apiRequest(endpointURL: "\(RestURL)", id: id)
         let session = URLSession.shared
         session.dataTask(with: apiResponseRequest) { (data, response, error) in
             if let error = error {
@@ -95,56 +95,63 @@ struct AccountManagerView: View {
     }
     
     var body: some View {
-        VStack {
-            Form {
-                Section(header: Text("chooseAccount")
-                            .font(.title)) {
-                    
-                    ForEach(accounts, id: \.self) { student in
-                        let keychain = Keychain()
-                        HStack {
-                            let studentString = "\(keychain[student] ?? "{}")"
-                            let data: Data = Data(studentString.utf8)
-                            let studentJSON = try! JSON(data: data)
-                            let studentEmail = getUsername(student: studentJSON)
-                            
-                            Button("\(studentEmail)") { setActualAccount(id: student) }
-                                .foregroundColor(Color("customControlColor"))
-                            if("\(actualId)" == "\(student)") {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.green)
-                            }
-                            Spacer()
-                            let image = Image(systemName: "pencil")
-                            Button("\(image)") { openEditAccount(id: student) }
-                                .sheet(isPresented: $showEditAccountModal, onDismiss: {
-                                    }) {
-                                        EditAccountView()
-                                    }
-                        }.buttonStyle(BorderlessButtonStyle())
+        if(isLogged == true) {
+            VStack {
+                Form {
+                    Section(header: Text("chooseAccount")
+                                .font(.title)) {
+                        ForEach(accounts, id: \.self) { student in
+                            let keychain = Keychain()
+                            HStack {
+                                let studentString = "\(keychain[student] ?? "{}")"
+                                let data: Data = Data(studentString.utf8)
+                                let studentJSON = try! JSON(data: data)
+                                let studentEmail = getUsername(student: studentJSON)
+                                
+                                Button("\(studentEmail)") { setActualAccount(id: student) }
+                                    .foregroundColor(Color("customControlColor"))
+                                    .aspectRatio(contentMode: .fit)
+                                if("\(actualId)" == "\(student)") {
+                                    Image(systemName: "checkmark.circle")
+                                        .foregroundColor(.green)
+                                }
+                                Spacer()
+                                let image = Image(uiImage: UIImage(systemName: "ellipsis")!)
+                                    .renderingMode(.template)
+                                
+                                Button("\(image)") { openEditAccount(id: student) }
+                                    .sheet(isPresented: $showEditAccountModal, onDismiss: {
+                                        }) {
+                                            AccountCardView()
+                                        }
+                            }.buttonStyle(BorderlessButtonStyle())
+                        }
                     }
                 }
+            }.onAppear {
+                let keychain = Keychain()
+                self.accounts = getStudentsNames()
+                self.actualId = "\(keychain["actualAccountId"] ?? "0")"
             }
+        } else {
             Spacer()
-            Button("addAccount") {addAccount()}
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .background(Color.accentColor.opacity(0.1))
-                .cornerRadius(12)
-                .buttonStyle(BorderlessButtonStyle())
-                .padding()
-                .sheet(isPresented: $showLoginModal, onDismiss: {
-                    }) {
-                        LoginView()
-                    }
-        }.onAppear {
-            let keychain = Keychain()
-            self.accounts = getStudentsNames()
-            self.actualId = "\(keychain["actualAccountId"] ?? "0")"
+            Text("No accounts added")
         }
+        Spacer()
+        Button("addAccount") {addAccount()}
+            .font(.headline)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
+            .frame(height: 55)
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor.opacity(0.1))
+            .cornerRadius(12)
+            .buttonStyle(BorderlessButtonStyle())
+            .padding()
+            .sheet(isPresented: $showLoginModal, onDismiss: {
+                }) {
+                    LoginView()
+                }
     }
 }
 
