@@ -1,4 +1,4 @@
-# wulkanowy-ios
+# Wulkanowy iOS
 🌋 iOSowy klient dziennika VULCAN UONET+ dla ucznia i rodzica 
 
 ![GitHub Workflow Status](https://github.com/wulkanowy/wulkanowy-ios/workflows/Build/badge.svg)
