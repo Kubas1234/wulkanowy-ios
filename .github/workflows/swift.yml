@@ -19,7 +19,7 @@ jobs:
       run: /usr/bin/xcodebuild -version
     - name: Build archive
       run: |
-        xcodebuild -sdk iphoneos -project wulkanowy/wulkanowy.xcodeproj \
+        xcodebuild -sdk iphoneos -project wulkanowy.xcodeproj \
           -configuration Release -scheme wulkanowy \
           -derivedDataPath DerivedData \
           -archivePath DerivedData/Archive/Wulkanowy archive
