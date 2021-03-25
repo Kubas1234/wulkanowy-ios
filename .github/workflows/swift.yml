@@ -13,5 +13,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+    - name: Build archive
+      run: |
+        xcodebuild -sdk iphoneos -project CocoaHeadsNL/CocoaHeadsNL.xcodeproj \
+          -configuration Release -scheme CocoaHeadsNL \
+          -derivedDataPath DerivedData \
+          -archivePath DerivedData/Archive/CocoaHeadsNL archive
+    - name: Export Archive
+      run: |
+        xcodebuild -exportArchive \
+          -archivePath DerivedData/Archive/CocoaHeadsNL.xcarchive \
+          -exportOptionsPlist provisioning/App-Store.plist \
+          -exportPath DerivedData/ipa
+
