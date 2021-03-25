@@ -115,7 +115,7 @@ struct AccountCardView: View {
     }
     
     private func getUsername() {
-        if("\(account["customUsername"])" == "null") {
+        if("\(account["customUsername"])".isEmpty) {
             username = "\(account["account"]["UserName"])"
         } else {
             username = "\(account["customUsername"])"

@@ -34,7 +34,12 @@ struct DashboardView: View {
                             }
             }.padding()
         } else {
-            Text("Here is dashboard (in my imagination)")
+            ScrollView {
+                PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        print("Refreshing..")
+                    }
+                Text("Here is dashboard (in my imagination)")
+            }.coordinateSpace(name: "pullToRefresh")
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C0B2AFD25F78A6A009EABEC /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5C0B2AFC25F78A6A009EABEC /* KeychainAccess */; };
+		5C0ED1E3260D2704000DE4C6 /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0ED1E2260D2704000DE4C6 /* PullToRefresh.swift */; };
 		5C1794B425E8FDFB007AD91A /* messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794B325E8FDFB007AD91A /* messages.swift */; };
 		5C1794B825E8FE08007AD91A /* notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794B725E8FE08007AD91A /* notes.swift */; };
 		5C1794BC25E8FE19007AD91A /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1794BB25E8FE19007AD91A /* settings.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C0ED1E2260D2704000DE4C6 /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 		5C1794B325E8FDFB007AD91A /* messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messages.swift; sourceTree = "<group>"; };
 		5C1794B725E8FE08007AD91A /* notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notes.swift; sourceTree = "<group>"; };
 		5C1794BB25E8FE19007AD91A /* settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				5CC2EAA325E516DD00B6183E /* Content */,
 				5C1B849F25E1B7A30074F29D /* Login */,
 				5C1CFA7925EA32AE0047286F /* ghImage.swift */,
+				5C0ED1E2260D2704000DE4C6 /* PullToRefresh.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				5C84E04A25FAC5520088FD47 /* residenceInfo.swift in Sources */,
 				5C84E05225FAC5700088FD47 /* family.swift in Sources */,
 				5CC2EAAE25E526B500B6183E /* navigation.swift in Sources */,
+				5C0ED1E3260D2704000DE4C6 /* PullToRefresh.swift in Sources */,
 				5C5162D825F0DCDE00EF0777 /* more.swift in Sources */,
 				5CF095AD25F053B10068F2C6 /* accountManager.swift in Sources */,
 				5C84E04E25FAC5670088FD47 /* contact.swift in Sources */,

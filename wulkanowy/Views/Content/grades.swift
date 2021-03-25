@@ -25,7 +25,12 @@ struct GradesView: View {
                             }
             }.padding()
         } else {
-            Text("Here is grades (in my imagination)")
+            ScrollView {
+                PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        print("Refreshing..")
+                    }
+                Text("Here is grades (in my imagination)")
+            }.coordinateSpace(name: "pullToRefresh")
         }
     }
 }

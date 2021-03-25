@@ -16,6 +16,8 @@ struct AccountManagerView: View {
     @AppStorage("isLogged") private var isLogged: Bool = false
     @State private var accounts: [String] = [""]
     @State private var actualId: String = "0"
+    @State private var showingDeleteAlert = false
+    @State private var deletingAccount = "0"
     
     private func getStudentsNames() -> [String] {
         //getting all accounts
@@ -24,6 +26,7 @@ struct AccountManagerView: View {
         
         //parsing allAccounts to array
         var allAccountsArray: [String] = []
+        print(allAccountsArray)
         if(allAccounts != "[]"){
             let data = Data(allAccounts.utf8)
             do {
@@ -86,8 +89,21 @@ struct AccountManagerView: View {
         accounts = getStudentsNames()
     }
     
+    private func deleteAccount() {
+        let keychain = Keychain()
+        var ids = getStudentsNames()
+        let id: Set<String> = [deletingAccount]
+        ids.removeAll(where: { id.contains($0) })
+        if(ids == []) {
+            isLogged = false
+        }
+        keychain["allAccounts"] = "\(ids)"
+        
+        keychain["\(deletingAccount)"] = nil
+    }
+    
     private func getUsername(student: JSON) -> String {
-        if("\(student["customUsername"])" == "null") {
+        if("\(student["customUsername"])".isEmpty) {
             return "\(student["account"]["UserName"])"
         } else {
             return "\(student["customUsername"])"
@@ -116,14 +132,24 @@ struct AccountManagerView: View {
                                         .foregroundColor(.green)
                                 }
                                 Spacer()
-                                let image = Image(uiImage: UIImage(systemName: "ellipsis")!)
+                                let cardImage = Image(uiImage: UIImage(systemName: "ellipsis")!)
                                     .renderingMode(.template)
                                 
-                                Button("\(image)") { openEditAccount(id: student) }
+                                Button("\(cardImage)") { openEditAccount(id: student) }
+                                    .foregroundColor(Color("customControlColor"))
+                                    .padding(.horizontal)
                                     .sheet(isPresented: $showEditAccountModal, onDismiss: {
                                         }) {
                                             AccountCardView()
                                         }
+                                
+                                let trashImage = Image(uiImage: UIImage(systemName: "trash")!)
+                                    .renderingMode(.template)
+                                
+                                Button("\(trashImage)") {
+                                    showingDeleteAlert = true
+                                    deletingAccount = student
+                                }
                             }.buttonStyle(BorderlessButtonStyle())
                         }
                     }
@@ -133,6 +159,12 @@ struct AccountManagerView: View {
                 self.accounts = getStudentsNames()
                 self.actualId = "\(keychain["actualAccountId"] ?? "0")"
             }
+            .alert(isPresented: $showingDeleteAlert) {
+                Alert(title: Text("Do you want to delete this account?"),
+                      message: Text("You cannot undo this action"),
+                      primaryButton: .destructive(Text("Delete"), action: deleteAccount),
+                      secondaryButton: .cancel(Text("Cancel")))
+                    }
         } else {
             Spacer()
             Text("No accounts added")

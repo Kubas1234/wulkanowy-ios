@@ -25,7 +25,12 @@ struct CalendarView: View {
                             }
             }.padding()
         } else {
-            Text("Here is calendar (in my imagination)")
+            ScrollView {
+                PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        print("Refreshing..")
+                    }
+                Text("Here is calendar (in my imagination)")
+            }.coordinateSpace(name: "pullToRefresh")
         }
     }
 }

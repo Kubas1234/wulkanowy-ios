@@ -23,7 +23,12 @@ struct MessagesView: View {
                             }
             }.padding()
         } else {
-            Text("Here is messages (in my imagination)")
+            ScrollView {
+                PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        print("Refreshing..")
+                    }
+                Text("Here is messages (in my imagination)")
+            }.coordinateSpace(name: "pullToRefresh")
         }
     }
 }
