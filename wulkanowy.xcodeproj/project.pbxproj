@@ -21,6 +21,8 @@
 		5C89C8F525EA6AA4000B5816 /* licenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89C8F425EA6AA4000B5816 /* licenses.swift */; };
 		5C89C90625EA7996000B5816 /* SwiftUIEKtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 5C89C90525EA7996000B5816 /* SwiftUIEKtensions */; };
 		5C9B6F4925D6C08D00C3F5F5 /* Sdk in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9B6F4825D6C08D00C3F5F5 /* Sdk */; };
+		5CB39737260D4BE200349B0D /* wulkanowyTests in Resources */ = {isa = PBXBuildFile; fileRef = 5CB39735260D4BE200349B0D /* wulkanowyTests */; };
+		5CB39738260D4BE200349B0D /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB39736260D4BE200349B0D /* LinuxMain.swift */; };
 		5CB9907225EE4A3200AA405C /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB9907125EE4A3200AA405C /* CustomButtonView.swift */; };
 		5CB9907625EE4A3B00AA405C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB9907525EE4A3B00AA405C /* OnboardingView.swift */; };
 		5CC2EAA525E516F100B6183E /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2EAA425E516F100B6183E /* dashboard.swift */; };
@@ -31,7 +33,6 @@
 		F4C6D90A2544E17400F8903A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9092544E17400F8903A /* LoginView.swift */; };
 		F4C6D90C2544E17500F8903A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90B2544E17500F8903A /* Assets.xcassets */; };
 		F4C6D90F2544E17500F8903A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90E2544E17500F8903A /* Preview Assets.xcassets */; };
-		F4C6D91A2544E17500F8903A /* wulkanowyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9192544E17500F8903A /* wulkanowyTests.swift */; };
 		F4C6D9252544E17500F8903A /* wulkanowyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9242544E17500F8903A /* wulkanowyUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,8 @@
 		5C89C8F425EA6AA4000B5816 /* licenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = licenses.swift; sourceTree = "<group>"; };
 		5C9B6E4925D6ADFB00C3F5F5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		5C9B6F4525D6C06D00C3F5F5 /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sdk; sourceTree = "<group>"; };
+		5CB39735260D4BE200349B0D /* wulkanowyTests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wulkanowyTests; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Tests/wulkanowyTests"; sourceTree = "<group>"; };
+		5CB39736260D4BE200349B0D /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Tests/LinuxMain.swift"; sourceTree = "<group>"; };
 		5CB9907125EE4A3200AA405C /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButtonView.swift; path = ../../../../../../Shared/CustomButtonView.swift; sourceTree = "<group>"; };
 		5CB9907525EE4A3B00AA405C /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = ../../../../../../Onboarding/OnboardingView.swift; sourceTree = "<group>"; };
 		5CC2EAA425E516F100B6183E /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 		F4C6D90E2544E17500F8903A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F4C6D9102544E17500F8903A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C6D9152544E17500F8903A /* wulkanowyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wulkanowyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4C6D9192544E17500F8903A /* wulkanowyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wulkanowyTests.swift; sourceTree = "<group>"; };
 		F4C6D91B2544E17500F8903A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C6D9202544E17500F8903A /* wulkanowyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wulkanowyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C6D9242544E17500F8903A /* wulkanowyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wulkanowyUITests.swift; sourceTree = "<group>"; };
@@ -271,7 +273,8 @@
 		F4C6D9182544E17500F8903A /* wulkanowyTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4C6D9192544E17500F8903A /* wulkanowyTests.swift */,
+				5CB39736260D4BE200349B0D /* LinuxMain.swift */,
+				5CB39735260D4BE200349B0D /* wulkanowyTests */,
 				F4C6D91B2544E17500F8903A /* Info.plist */,
 			);
 			path = wulkanowyTests;
@@ -413,6 +416,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB39737260D4BE200349B0D /* wulkanowyTests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C6D91A2544E17500F8903A /* wulkanowyTests.swift in Sources */,
+				5CB39738260D4BE200349B0D /* LinuxMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
