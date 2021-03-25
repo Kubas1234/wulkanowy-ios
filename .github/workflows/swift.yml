@@ -19,14 +19,14 @@ jobs:
       run: /usr/bin/xcodebuild -version
     - name: Build archive
       run: |
-        xcodebuild -sdk iphoneos -project CocoaHeadsNL/CocoaHeadsNL.xcodeproj \
-          -configuration Release -scheme CocoaHeadsNL \
+        xcodebuild -sdk iphoneos -project wulkanowy/wulkanowy.xcodeproj \
+          -configuration Release -scheme wulkanowy \
           -derivedDataPath DerivedData \
-          -archivePath DerivedData/Archive/CocoaHeadsNL archive
+          -archivePath DerivedData/Archive/Wulkanowy archive
     - name: Export Archive
       run: |
         xcodebuild -exportArchive \
-          -archivePath DerivedData/Archive/CocoaHeadsNL.xcarchive \
+          -archivePath DerivedData/Archive/Wulkanowy.xcarchive \
           -exportOptionsPlist provisioning/App-Store.plist \
           -exportPath DerivedData/ipa
 
