@@ -17,9 +17,10 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_12.4.app
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
+      
+    - name: Build sdk
+      run: xcodebuild  -project wulkanowy.xcodeproj -scheme Sdk build
+    
     - name: Build app
-      run: |
-        xcodebuild CODE_SIGNING_ALLOWED=NO -sdk iphoneos -workspace wulkanowy.xcworkspace \
-          -configuration Release -scheme wulkanowy \
-          -derivedDataPath DerivedData clean build
+      run: xcodebuild CODE_SIGNING_ALLOWED=NO -project wulkanowy.xcodeproj -scheme wulkanowy build
 
