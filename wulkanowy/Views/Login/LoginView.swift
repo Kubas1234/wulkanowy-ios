@@ -5,17 +5,24 @@
 //  Created by Mikołaj on 25/10/2020.
 //
 
-
 import SwiftUI
+import KeychainAccess
+import SwiftyJSON
 
 enum AvailableEndpoints: String, CaseIterable {
     case vulcan = "Vulcan"
     case fakelog = "Fakelog"
 }
 
+open class Navigation: ObservableObject {
+    let window: UIWindow
+
+    public init(window: UIWindow) {
+        self.window = window
+    }
+}
 
 struct LoginView: View {
-    
     @StateObject var vulcan: VulcanStore = VulcanStore.shared
     
     @State private var token: String = ""
@@ -27,10 +34,12 @@ struct LoginView: View {
     @State private var buttonValue = String(format: NSLocalizedString("loginButton", comment: "loginButton"))
     @State private var loginStatus: String = ""
     @State private var willMoveToNextScreen = false
+    @State private var success = false
+    @State private var showingAlert = false
     
     let cellHeight: CGFloat = 55
     let cornerRadius: CGFloat = 12
-    let cellBackground: Color = Color(UIColor.systemGray6).opacity(0.5)
+    let cellBackground: Color = Color(UIColor.systemGray5).opacity(0.5)
     
     let nullColor: Color = Color.accentColor.opacity(0.4)
     
@@ -49,16 +58,19 @@ struct LoginView: View {
                         
                         case "wrongPin":
                             buttonValue = String(format: NSLocalizedString("\(error)", comment: "loginButton"))
+                            
+                        case "deviceExist":
+                            showingAlert.toggle()
+                            success = false
                         
                         default:
                             buttonValue = String(format: NSLocalizedString("invalidData", comment: "loginButton"))
                         }
                     } else {
                         print("success")
+                        success = true
                     }
             }
-            
-            
         }
     }
     
@@ -102,85 +114,95 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack {
-                Image("wulkanowy")
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 92)
-                    .foregroundColor(.accentColor)
-                    .padding(.bottom)
-                
-                Text("loginTitle")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-            
-            Spacer()
-            
-            TextField("token", text: $token)
-                .autocapitalization(.none)
-                .font(Font.body.weight(Font.Weight.medium))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .frame(height: cellHeight)
-                .background(cellBackground)
-                .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(setColor(input: "token"), lineWidth: 2)
-                    )
-            
-            TextField("symbol", text: $symbol)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .font(Font.body.weight(Font.Weight.medium))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .frame(height: cellHeight)
-                .background(cellBackground)
-                .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(setColor(input: "symbol"), lineWidth: 2)
-                    )
-            
-            TextField("pin", text: $pin)
-                .keyboardType(.numberPad)
-                .autocapitalization(.none)
-                .font(Font.body.weight(Font.Weight.medium))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .frame(height: cellHeight)
-                .background(cellBackground)
-                .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(setColor(input: "pin"), lineWidth: 2)
-                    )
-            
-            TextField("deviceName", text: $deviceModel)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .font(Font.body.weight(Font.Weight.medium))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .frame(height: cellHeight)
-                .background(cellBackground)
-                .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(setColor(input: "deviceName"), lineWidth: 2)
-                    )
-            
-            Spacer()
-            
-            Button(buttonValue) {login()}
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .frame(height: cellHeight)
-                .frame(maxWidth: .infinity)
-                .background(Color.accentColor.opacity(0.1))
-                .cornerRadius(cornerRadius)
+        if(success == true) {
+            ChooseStudentView()
         }
-        .padding()
-        Spacer()
+        else
+        {
+            VStack {
+                Spacer()
+                    Image("wulkanowy")
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 92)
+                        .foregroundColor(.accentColor)
+                        .padding(.bottom)
+                    
+                    Text("loginTitle")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                
+                Spacer()
+                
+                TextField("token", text: $token)
+                    .autocapitalization(.none)
+                    .font(Font.body.weight(Font.Weight.medium))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .frame(height: cellHeight)
+                    .background(cellBackground)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(setColor(input: "token"), lineWidth: 2)
+                        )
+                
+                TextField("symbol", text: $symbol)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .font(Font.body.weight(Font.Weight.medium))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .frame(height: cellHeight)
+                    .background(cellBackground)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(setColor(input: "symbol"), lineWidth: 2)
+                        )
+                
+                TextField("pin", text: $pin)
+                    .keyboardType(.numberPad)
+                    .autocapitalization(.none)
+                    .font(Font.body.weight(Font.Weight.medium))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .frame(height: cellHeight)
+                    .background(cellBackground)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(setColor(input: "pin"), lineWidth: 2)
+                        )
+                
+                TextField("deviceName", text: $deviceModel)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .font(Font.body.weight(Font.Weight.medium))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .frame(height: cellHeight)
+                    .background(cellBackground)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(setColor(input: "deviceName"), lineWidth: 2)
+                        )
+                
+                Spacer()
+                
+                Button(buttonValue) {login()}
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .frame(height: cellHeight)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.accentColor.opacity(0.1))
+                    .cornerRadius(cornerRadius)
+                
+            }.padding()
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("accountRegistered"), message: Text("accountRegisteredContent"), dismissButton: .default(Text("OK")))}
+                Spacer()
+            
+        }
     }
 }
 

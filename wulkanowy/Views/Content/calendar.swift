@@ -1,13 +1,15 @@
 //
-//  messages.swift
+//  attendance.swift
 //  wulkanowy
 //
-//  Created by Tomasz on 26/02/2021.
+//  Created by Tomasz on 24/02/2021.
 //
 
 import SwiftUI
+import KeychainAccess
+import Sdk
 
-struct MessagesView: View {
+struct CalendarView: View {
     @State private var showModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
     
@@ -27,7 +29,7 @@ struct MessagesView: View {
                 PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                         print("Refreshing..")
                     }
-                Text("Here is messages (in my imagination)")
+                Text("Here is calendar (in my imagination)")
             }.coordinateSpace(name: "pullToRefresh")
         }
     }
@@ -35,10 +37,10 @@ struct MessagesView: View {
 
 
 
-struct MessagesView_Previews: PreviewProvider {
+struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MessagesView()
+            CalendarView()
         }
         .preferredColorScheme(.dark)
     }

@@ -4,7 +4,6 @@
 //
 //  Created by Tomasz on 24/02/2021.
 //
-
 import SwiftUI
 
 struct MoreView: View {
@@ -12,9 +11,9 @@ struct MoreView: View {
         NavigationView {
             Form {
                 Section {
-                    NavigationLink(destination: MessagesView()) {
-                        Label("messagesButton", systemImage: "envelope")
-                            .accessibility(label: Text("messagesButton"))
+                    NavigationLink(destination: AttendanceView()) {
+                        Label("attendanceButton", systemImage: "chart.bar.doc.horizontal")
+                            .accessibility(label: Text("attendanceButton"))
                     }
                     NavigationLink(destination: NotesView()) {
                         Label("notesButton", systemImage: "graduationcap")

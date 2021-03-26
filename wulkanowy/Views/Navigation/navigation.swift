@@ -5,33 +5,59 @@
 //  Created by Tomasz on 23/02/2021.
 //
 
+//
+//  navigation.swift
+//  wulkanowy
+//
+//  Created by Tomasz on 23/02/2021.
+//
 import SwiftUI
 
 struct NavigationBarView: View {
     var body: some View {
         TabView() {
-            DashboardView()
-            .tabItem {
+            NavigationView {
+                DashboardView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
                 Label("dashboardButton", systemImage: "rectangle.on.rectangle")
                     .accessibility(label: Text("dashboardButton"))
             }
-
-            GradesView()
-            .tabItem {
+            
+            NavigationView {
+                GradesView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
                 Label("gradesButton", systemImage: "rosette")
                     .accessibility(label: Text("gradesButton"))
             }
-            
-            ExamsView()
-            .tabItem {
-                Label("examsButton", systemImage: "calendar")
-                    .accessibility(label: Text("examsButton"))
+
+            NavigationView {
+                CalendarView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
+                Label("calendarButton", systemImage: "calendar")
+                    .accessibility(label: Text("calendarButton"))
             }
             
-            HomeworksView()
-            .tabItem {
-                Label("homeworkButton", systemImage: "note.text")
-                    .accessibility(label: Text("homeworkButton"))
+            NavigationView {
+                MessagesView()
+                    .navigationBarItems(trailing: NavigationLink(destination: AccountManagerView()) {
+                        Image(systemName: "person.circle")
+                    })
+                        }
+                .tabItem {
+                Label("messagesButton", systemImage: "envelope")
+                    .accessibility(label: Text("messagesButton"))
             }
             
             MoreView()
@@ -52,4 +78,3 @@ struct NavigationBarView_Previews: PreviewProvider {
         .preferredColorScheme(.dark)
     }
 }
-

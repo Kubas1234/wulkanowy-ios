@@ -7,15 +7,17 @@
 
 
 import Foundation
+import KeychainAccess
 import Combine
 import os
-import KeychainAccess
+import SwiftyJSON
+import SwiftUI
 
 @available (iOS 14, macOS 11, watchOS 7, tvOS 14, *)
 public class Sdk {
     static private let libraryVersion: String = "0.0.1"
     
-    private let loggerSubsystem: String = "com.wulkanowy-ios.Sdk"
+    private let loggerSubsystem: String = "io.wulkanowy-ios.Sdk"
     private var cancellables: Set<AnyCancellable> = []
     
     var firebaseToken: String!
@@ -140,9 +142,91 @@ public class Sdk {
                    let parsedError = self.parseResponse(response) {
                     completionHandler(parsedError)
                 } else {
-                    self.getStudents(symbol: symbol, deviceModel: deviceModel)
-                    completionHandler(nil)
+                    do {
+                        let keychain = Keychain()
+                        let allAccountsCheck: String! = keychain["allAccounts"] ?? "[]"
+                        let receiveValueJSON = try! JSON(data: data)
+                        
+                        //parsing allAccounts to array
+                        let data = Data(allAccountsCheck.utf8)
+                        do {
+                            var ids = try JSONSerialization.jsonObject(with: data) as! [Int]
+                            if(ids == [])
+                            {
+                                ids = [0]
+                            } else {
+                                ids.append(ids.last! + 1)
+                            }
+                            keychain["allAccounts"] = "\(ids)"
+                            
+                        } catch {
+                            print(error)
+                        }
+                        
+                        // Get private key
+                        guard let privateKeyRawData = self.certificate.getPrivateKeyData(format: .DER),
+                              let privateKeyString = String(data: privateKeyRawData, encoding: .utf8)?
+                                .split(separator: "\n")
+                                .dropFirst()
+                                .dropLast()
+                                .joined()
+                                .data(using: .utf8) else {
+                            return
+                        }
+                        
+                        let privateKeyStringString = String(decoding: privateKeyString, as: UTF8.self)
+                        
+                        let fingerprint = self.certificate.getCertificateFingerprint().lowercased()
+                        
+                        let saveAccount = """
+                        {
+                            "actualStudent": "0",
+                            "customUsername": "",
+                            "privateKeyString": "\(privateKeyStringString)",
+                            "fingerprint": "\(fingerprint)",
+                            "deviceModel": "\(deviceModel)",
+                            "account": {
+                                "UserName": "\(receiveValueJSON["Envelope"]["UserName"])",
+                                "RestURL": "\(receiveValueJSON["Envelope"]["RestURL"])",
+                                "UserLogin": "\(receiveValueJSON["Envelope"]["UserLogin"])",
+                                "LoginId": "\(receiveValueJSON["Envelope"]["LoginId"])"
+                                }
+                        }
+                        """
+                        
+                        let ids = keychain["allAccounts"]
+                        let dataIds: Data = Data(ids!.utf8)
+                        let idsArray = try JSONSerialization.jsonObject(with: dataIds) as! [Int]
+                        let id = idsArray.last
+                        
+                        keychain["\(id!)"] = "\(saveAccount)"
+
+                        keychain["actualStudentId"] = "\(id!)"
+                        keychain["actualAccountEmail"] = "\(receiveValueJSON["Envelope"]["UserName"])"
+                        
+                        let endpointURL: String = "\(receiveValueJSON["Envelope"]["RestURL"])api/mobile/register/hebe"
+                        
+                        let apiResponseRequest = apiRequest(endpointURL: endpointURL, id: "\(id!)")
+                        let session = URLSession.shared
+                        session.dataTask(with: apiResponseRequest) { (data, response, error) in
+                            if let error = error {
+                                // Handle HTTP request error
+                                print(error)
+                            } else if let data = data {
+                                // Handle HTTP request response
+                                let responseBody = String(data: data, encoding: String.Encoding.utf8)
+                                
+                                keychain["actualStudentHebe"] = "\(responseBody!)"
+                                
+                            } else {
+                                // Handle unexpected error
+                            }
+                        }.resume()
+                    } catch {
+                        print(error)
+                    }
                 }
+                completionHandler(nil)
             })
             .store(in: &cancellables)
     }
@@ -190,6 +274,8 @@ public class Sdk {
         let keychain = Keychain()
         keychain[string: "keyFingerprint"] = keyFingerprint
         
+        //Boże, proszę, dlaczego to nie działa, błagam
+        
         // Body
         let body: [String: Encodable?] = [
             "AppName": "DzienniczekPlus 2.0",
@@ -211,7 +297,7 @@ public class Sdk {
             "Timestamp": now.millisecondsSince1970,
             "TimestampFormatted": "\(timestampFormatted) GMT"
         ]
-
+        
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         
         request.allHTTPHeaderFields = [
@@ -223,50 +309,6 @@ public class Sdk {
         let signedRequest = try request.signed(with: certificate)
         
         return URLSession.shared.dataTaskPublisher(for: signedRequest)
-    }
-    
-    private func getStudents(symbol: String, deviceModel: String) {
-        let url = "\(self.endpointURL!)/\(symbol)/api/mobile/register/hebe"
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "GET"
-        
-        let now = Date()
-        var vDate: String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss"
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            
-            return "\(dateFormatter.string(from: now)) GMT"
-        }
-        
-        let signatures = getSignatures(request: request, certificate: certificate)
-        request.setValue("\(signatures)", forHTTPHeaderField: "Signature")
-        
-        request.allHTTPHeaderFields = [
-            "User-Agent": "wulkanowy/1 CFNetwork/1220.1 Darwin/20.1.0",
-            "vOS": "iOS",
-            "vDeviceModel": deviceModel,
-            "vAPI": "1",
-            "vDate": vDate,
-            "vCanonicalUrl": "api%2fmobile%2fregister%2fhebe"
-        ]
-        
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                // Handle HTTP request error
-                print(error)
-            } else if let data = data {
-                // Handle HTTP request response
-                print(String(data: data, encoding: String.Encoding.utf8) as Any)
-            } else {
-                // Handle unexpected error
-            }
-        }
-
-        task.resume()
-
     }
     
     // MARK: - Helper functions
@@ -287,6 +329,7 @@ public class Sdk {
             case 200:    return APIError.wrongToken
             case -1:        return APIError.wrongSymbol //Ya, Vulcan returns -1 code
             case 203:    return APIError.wrongPin
+            case 205:    return APIError.deviceExist
             default:    return nil
         }
     }

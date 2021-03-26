@@ -1,13 +1,13 @@
 //
-//  notes.swift
+//  attendance.swift
 //  wulkanowy
 //
-//  Created by Tomasz on 26/02/2021.
+//  Created by Tomasz on 04/03/2021.
 //
 
 import SwiftUI
 
-struct NotesView: View {
+struct AttendanceView: View {
     @State private var showModal = false
     @AppStorage("isLogged") private var isLogged: Bool = false
     
@@ -15,7 +15,7 @@ struct NotesView: View {
         NavigationView {
             if(isLogged == false){
                 VStack {
-                    Text("You are not logged in (notes)")
+                    Text("You are not logged in")
                     Button("Log in") {self.showModal = true}
                         .sheet(isPresented: $showModal, onDismiss: {
                                     print(self.showModal)
@@ -28,7 +28,7 @@ struct NotesView: View {
                     PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                             print("Refreshing..")
                         }
-                    Text("Here is notes (in my imagination)")
+                    Text("Here is attendance (in my imagination)")
                 }.coordinateSpace(name: "pullToRefresh")
             }
         }
@@ -37,10 +37,10 @@ struct NotesView: View {
 
 
 
-struct NotesView_Previews: PreviewProvider {
+struct AttendanceView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            NotesView()
+            AttendanceView()
         }
         .preferredColorScheme(.dark)
     }

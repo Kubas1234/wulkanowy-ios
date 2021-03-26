@@ -10,23 +10,36 @@ import KeychainAccess
 import Sdk
 
 struct DashboardView: View {
+    @State private var showModal = false
+    @AppStorage("isLogged") private var isLogged: Bool = false
+    
     init() {
-        let keychain = Keychain()
-        let key = keychain["privateKey"]
-        
-        let luckyNumber = getLuckyNumber()
-        print(luckyNumber)
+        if(isLogged == true){
+            let luckyNumber = getLuckyNumber()
+            
+            print(luckyNumber)
+        }
         
     }
     
     var body: some View {
-        NavigationView {
+        if(isLogged == false){
             VStack {
-                Text("You are not logged in (dashboard)")
-                NavigationLink(destination: LoginView()) {
-                    Text("Log in")
-                }
+                Text("You are not logged in")
+                Button("Log in") {self.showModal = true}
+                    .sheet(isPresented: $showModal, onDismiss: {
+                                print(self.showModal)
+                            }) {
+                                LoginView()
+                            }
             }.padding()
+        } else {
+            ScrollView {
+                PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        print("Refreshing..")
+                    }
+                Text("Here is dashboard (in my imagination)")
+            }.coordinateSpace(name: "pullToRefresh")
         }
     }
 }

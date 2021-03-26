@@ -6,6 +6,19 @@
   
 */
 
+//ONBOARDING
+"onboardingTitle" = "Witaj w Wulkanowym!";
+
+"notificationsOnboarding" = "Powiadomienia";
+"messagesOnboarding" = "Wiadomości";
+"fast" = "Prędkość";
+
+"notificationsOnboardingContent" = "Zapomnij o zapisywaniu sprawdzianów w kalendarzyku";
+"messagesOnboardingContent" = "Prosty kontakt z twoimi ulubionymi nauczycielami";
+"fastContent" = "Szybki, niczym Sonic";
+
+"continueButton" = "Zaczynajmy!";
+
 //LOGIN SCREEN
 "loginTitle" = "Logowanie";
 "token" = "Token";
@@ -18,12 +31,18 @@
 "wrongPin" = "Zły pin";
 "invalidData" = "Zły token, symbol lub pin";
 "success" = "Sukces";
+"accountRegistered" = "Konto zarejestrowane";
+"accountRegisteredContent" = "Konto zostało już zarejestrowane. Proszę zalogowaź się na inne konto.";
+
+//CHOOSE ACCOUNT
+"registerButton" = "Zarejestruj";
+"selectStudent" = "Wybierz ucznia";
 
 //NAVIGATION
 "dashboardButton" = "Start";
 "gradesButton" = "Oceny";
-"examsButton" = "Sprawdziany";
-"homeworkButton" = "Zadania";
+"calendarButton" = "Kalendarz";
+"attendanceButton" = "Frekwencja";
 "moreButton" = "Więcej";
 
 //MORE
@@ -45,3 +64,7 @@
 
 //LICENCES
 "noLicence" = "Brak licencji";
+
+//ACCOUNT MANAGER
+"addAccount" = "Dodaj konto";
+"chooseAccount" = "Wybierz konto";

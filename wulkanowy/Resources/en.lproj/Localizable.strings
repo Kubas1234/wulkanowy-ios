@@ -6,6 +6,19 @@
   
 */
 
+//ONBOARDING
+"onboardingTitle" = "Welcome to Wulkanowy!";
+
+"notificationsOnboarding" = "Notifications";
+"messagesOnboarding" = "Messages";
+"fast" = "Fast";
+
+"notificationsOnboardingContent" = "Forget about saving exams in calendar";
+"messagesOnboardingContent" = "Simple contact with your favorite teachers";
+"fastContent" = "Fast as Sonic";
+
+"continueButton" = "Let's go!";
+
 //LOGIN SCREEN
 "loginTitle" = "Log In";
 "token" = "Token";
@@ -18,12 +31,18 @@
 "wrongPin" = "Wrong pin";
 "invalidData" = "Wrong token, symbol or pin";
 "success" = "Success";
+"accountRegistered" = "Account registered";
+"accountRegisteredContent" = "The account has already registered. Please log in to another account.";
+
+//CHOOSE ACCOUNT
+"registerButton" = "Register";
+"selectStudent" = "Select student";
 
 //NAVIGATION
 "dashboardButton" = "Dashboard";
 "gradesButton" = "Grades";
-"examsButton" = "Exams";
-"homeworkButton" = "Homework";
+"calendarButton" = "Calendar";
+"attendanceButton" = "Attendance";
 "moreButton" = "More";
 
 //MORE
@@ -45,3 +64,7 @@
 
 //LICENCES
 "noLicence" = "No licence";
+
+//ACCOUNT MANAGER
+"addAccount" = "Add account";
+"chooseAccount" = "Choose account";

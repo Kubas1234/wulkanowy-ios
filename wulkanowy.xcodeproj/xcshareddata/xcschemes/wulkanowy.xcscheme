@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4C6D9142544E17500F8903A"
+               BuildableName = "wulkanowyTests.xctest"
+               BlueprintName = "wulkanowyTests"
+               ReferencedContainer = "container:wulkanowy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4C6D91F2544E17500F8903A"
+               BuildableName = "wulkanowyUITests.xctest"
+               BlueprintName = "wulkanowyUITests"
+               ReferencedContainer = "container:wulkanowy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

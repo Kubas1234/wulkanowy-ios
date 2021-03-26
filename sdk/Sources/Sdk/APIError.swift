@@ -18,6 +18,7 @@ public extension Sdk {
         case noPrivateKey
         case noSignatureValues
         case urlError
+        case deviceExist
         
         case wrongToken
         case wrongSymbol
