@@ -13,5 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_12.4.app
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+    - name: Resolve package dependencies
+      run: |
+        xcodebuild -resolvePackageDependencies
+    - name: Build app
+      run: |
+        xcodebuild CODE_SIGNING_ALLOWED=NO -workspace "wulkanowy.xcworkspace" -scheme "wulkanowy" -configuration Release -sdk iphoneos 
+
