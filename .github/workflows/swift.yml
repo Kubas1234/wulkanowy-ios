@@ -17,6 +17,8 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_12.4.app
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
+    - name: Removing libraries
+      run: rm -rf ~/Library/Developer/Xcode/DerivedData/*
     - name: Build app
       run: |
         xcodebuild CODE_SIGNING_ALLOWED=NO -project wulkanowy.xcodeproj
