@@ -19,7 +19,7 @@ jobs:
       run: /usr/bin/xcodebuild -version
     - name: Build app
       run: |
-        xcodebuild CODE_SIGNING_ALLOWED=NO -sdk iphoneos -project wulkanowy.xcodeproj \
+        xcodebuild CODE_SIGNING_ALLOWED=NO -sdk iphoneos -workspace wulkanowy.xcworkspace \
           -configuration Release -scheme wulkanowy \
           -derivedDataPath DerivedData clean build
 
