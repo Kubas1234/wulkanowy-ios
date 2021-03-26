@@ -19,5 +19,5 @@ jobs:
       run: /usr/bin/xcodebuild -version
     - name: Build app
       run: |
-        xcodebuild CODE_SIGNING_ALLOWED=NO -project"wulkanowy.xcodeproj" -scheme "wulkanowy" -configuration Release -sdk iphoneos 
+        xcodebuild CODE_SIGNING_ALLOWED=NO -project "wulkanowy.xcodeproj" -scheme "wulkanowy" -configuration Release -sdk iphoneos 
 
