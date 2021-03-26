@@ -39,7 +39,6 @@
 		F4C6D90A2544E17400F8903A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9092544E17400F8903A /* LoginView.swift */; };
 		F4C6D90C2544E17500F8903A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90B2544E17500F8903A /* Assets.xcassets */; };
 		F4C6D90F2544E17500F8903A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6D90E2544E17500F8903A /* Preview Assets.xcassets */; };
-		F4C6D91A2544E17500F8903A /* wulkanowyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9192544E17500F8903A /* wulkanowyTests.swift */; };
 		F4C6D9252544E17500F8903A /* wulkanowyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D9242544E17500F8903A /* wulkanowyUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,7 +116,6 @@
 		F4C6D90E2544E17500F8903A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F4C6D9102544E17500F8903A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C6D9152544E17500F8903A /* wulkanowyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wulkanowyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4C6D9192544E17500F8903A /* wulkanowyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wulkanowyTests.swift; sourceTree = "<group>"; };
 		F4C6D91B2544E17500F8903A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4C6D9202544E17500F8903A /* wulkanowyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wulkanowyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C6D9242544E17500F8903A /* wulkanowyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wulkanowyUITests.swift; sourceTree = "<group>"; };
@@ -294,7 +292,8 @@
 		F4C6D9182544E17500F8903A /* wulkanowyTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4C6D9192544E17500F8903A /* wulkanowyTests.swift */,
+				5CB39736260D4BE200349B0D /* LinuxMain.swift */,
+				5CB39735260D4BE200349B0D /* wulkanowyTests */,
 				F4C6D91B2544E17500F8903A /* Info.plist */,
 			);
 			path = wulkanowyTests;
@@ -438,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB39737260D4BE200349B0D /* wulkanowyTests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C6D91A2544E17500F8903A /* wulkanowyTests.swift in Sources */,
+				5CB39738260D4BE200349B0D /* LinuxMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
