@@ -17,16 +17,7 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_12.4.app
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
-    - name: Build archive
+    - name: Build app
       run: |
-        xcodebuild -sdk iphoneos -project wulkanowy.xcodeproj \
-          -configuration Release -scheme wulkanowy \
-          -derivedDataPath DerivedData \
-          -archivePath DerivedData/Archive/Wulkanowy archive
-    - name: Export Archive
-      run: |
-        xcodebuild -exportArchive \
-          -archivePath DerivedData/Archive/Wulkanowy.xcarchive \
-          -exportOptionsPlist provisioning/App-Store.plist \
-          -exportPath DerivedData/ipa
+        xcodebuild CODE_SIGNING_ALLOWED=NO -project wulkanowy.xcodeproj
 
