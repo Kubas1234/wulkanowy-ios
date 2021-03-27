@@ -15,11 +15,15 @@ jobs:
     - uses: actions/checkout@v2
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_12.4.app
+      
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
       
     - name: Build sdk
       run: xcodebuild  -project wulkanowy.xcodeproj -scheme Sdk build
+      
+    - name: Resolve package dependencies
+      run: xcodebuild -resolvePackageDependencies
     
     - name: Build app
       run: xcodebuild CODE_SIGNING_ALLOWED=NO -project wulkanowy.xcodeproj -scheme wulkanowy build
