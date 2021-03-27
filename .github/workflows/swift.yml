@@ -29,5 +29,5 @@ jobs:
       run: rm -rf ~/Library/Developer/Xcode/DerivedData/ModuleCache
     
     - name: Build app
-      run: xcodebuild CODE_SIGNING_ALLOWED=NO -project wulkanowy.xcodeproj -scheme wulkanowy clean build
+      run: xcodebuild CODE_SIGNING_ALLOWED=NO -workspace wulkanowy.xcworkspace -scheme wulkanowy clean build
 
